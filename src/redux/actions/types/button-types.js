@@ -1,0 +1,2 @@
+export const PRESSED_START = "PRESSED_START";
+export const PRESSED_CLEAR = "PRESSED_CLEAR";
