@@ -1,5 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import MasterNode from "../atoms/nodes/abstraction/master-node-list"
+import '../../css/grid-visualizer.css'
+import "../../css/node.css"
 // import Node from '../atoms/node';
 
 export default function Grid() {
@@ -14,33 +17,21 @@ export default function Grid() {
 
         }
     }
-    return grid.map((value, row_index) =>
-        <div>
-            {grid.map((val, column_index) =>
-<div className={"grid-row-" + row_index + " grid-column-" + column_index}>{`${value[column_index]['type']}`}
-            </div>    
+
+
+    
+    return <div className="grid visualizer">
+    {grid.map((value, row_index) =>
+    
+            {return grid.map((val, column_index) => 
+
+                // `form-control round-lg ${this.state.valid ? '' : 'error'}`
+            <MasterNode key={`node-${row_index}-${column_index}`} id={`node-${row_index}-${column_index}`} className={`grid-item visited-${value[column_index]['visited']}` } type={value[column_index]['type']}>
+                {value[column_index]['type']}
+                </MasterNode>
+            
             )}
-        </div>
-    )
-    //  <div className={"grid-row" + index} key={value}>{value[1]["type"]}</div> 
-    /* <div className="grid-row" key={index}>{`${value[index]["type"]}`}</div> */
+    )}
+    </div> 
 
 }
-
-
-
-
-
-// export default class Grid extends Component {
-
-//     render() {
-//         // selector = getGridSelector();
-//     const grid = useSelector(state => state.grid)
-//     return <div></div>
-//         // return selector.map((val, idx) =>
-//         //     <div className="array-bar" key={idx} style={{ height: `${val}px` }}>
-//         //         <p>{val}</p>
-//         //     </div>
-//         // )
-//     }
-// }
