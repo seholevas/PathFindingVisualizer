@@ -22,16 +22,18 @@ export default function Grid() {
     
     return <div className="grid visualizer">
     {grid.map((value, row_index) =>
-    
-            {return grid.map((val, column_index) => 
+    <div className={`row row-${row_index}`}>
+            {grid.map((val, column_index) => 
 
                 // `form-control round-lg ${this.state.valid ? '' : 'error'}`
-            <MasterNode key={`node-${row_index}-${column_index}`} id={`node-${row_index}-${column_index}`} className={`grid-item visited-${value[column_index]['visited']}` } type={value[column_index]['type']}>
-                {value[column_index]['type']}
+            <MasterNode key={`${row_index}-${column_index}`} id={`${row_index}-${column_index}`} className={`flex-item visited-${value[column_index]['visited']}` } type={value[column_index]['type']}>
+                {`${row_index}-${column_index}`}
                 </MasterNode>
             
             )}
+            </div>
     )}
+    
     </div> 
 
 }

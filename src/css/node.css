@@ -6,8 +6,17 @@
   background: #F3BB45;
 }
 
-.node-empty {
+/* .node-empty {
   background: #F3BB45;
+} */
+
+.node-start
+{
+  background: #00C49A
 }
 
+.node-end
+{
+  background: #156064
+}
 /*# sourceMappingURL=node.css.map */
