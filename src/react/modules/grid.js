@@ -3,20 +3,19 @@ import { useSelector } from 'react-redux';
 import MasterNode from "../atoms/nodes/abstraction/master-node-list"
 import '../../css/grid-visualizer.css'
 import "../../css/node.css"
-// import Node from '../atoms/node';
 
 export default function Grid() {
     // const selector = getGridSelector();
     const grid = useSelector(state => state.grid)
     // console.log("grid: ", grid)
 
-    for (let row = 0; row < grid.length; row++) {
-        for (let col = 0; col < grid[row].length; col++) {
-            console.log(grid[row][col]['type'])
-            // return <div className={"grid-row" + (row) + " "+ col} key={row+ " "+ col}></div>
+    // for (let row = 0; row < grid.length; row++) {
+    //     for (let col = 0; col < grid[row].length; col++) {
+    //         console.log(grid[row][col]['type'])
+    //         // return <div className={"grid-row" + (row) + " "+ col} key={row+ " "+ col}></div>
 
-        }
-    }
+    //     }
+    // }
 
 
     

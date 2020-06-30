@@ -25,9 +25,7 @@ function Dijikstra(grid=[[]], source=graph[0][0])
 {
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
-            grid[row][col]['type']
-            // return <div className={"grid-row" + (row) + " "+ col} key={row+ " "+ col}></div>
-
+            
         }
     }
 }
