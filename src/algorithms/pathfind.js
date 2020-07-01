@@ -30,20 +30,22 @@ export default async function startPathFinding() {
     const array = store.getState().grid;
     let playing = store.getState().settings;
     console.log("playing: ", playing);
-    // console.log("grid: ", array);
+    console.log("grid: ", array);
 
 
     const pathFindingType = getValueByElementId("algorithms");
     const generator = getAlgorithm(array, pathFindingType);
-    let result = "currently_null";
-    // let result = generator.next();
-    do
-    {
-        result = await generator.next();
-        let value = result.value;
+    let result = generator.next();
+
+    // && playing
+    while (!result.done) {
+
+        let value = result.value
         console.log("value: ", value)
-        playing = await store.getState().settings;
+        // dispatchChangedArrayOrder(value);
+        result = generator.next();
+        // await sleep(1000 / getValueByElementId("speed"));
+        // playing = await store.getState().settings
     }
-    while(!result.done);
     // dispatchSortStopped()
 }

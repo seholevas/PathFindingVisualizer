@@ -1,51 +1,26 @@
-// 1  function Dijkstra(Graph, source):
-// 2
-// 3      create vertex set Q
-// 4
-// 5      for each vertex v in Graph:             
-// 6          dist[v] ← INFINITY                  
-// 7          prev[v] ← UNDEFINED                 
-// 8          add v to Q                      
-// 10      dist[source] ← 0                        
-// 11      
-// 12      while Q is not empty:
-// 13          u ← vertex in Q with min dist[u]    
-// 14                                              
-// 15          remove u from Q 
-// 16          
-// 17          for each neighbor v of u:           // only v that are still in Q
-// 18              alt ← dist[u] + length(u, v)
-// 19              if alt < dist[v]:               
-// 20                  dist[v] ← alt 
-// 21                  prev[v] ← u 
-// 22
-// 23      return dist[], prev[]
-
-export default function* dijkstra(matrix = [[]], source = [0, 0], final = [0,3]) {
-    let adjacency_matrix = [...matrix]
+export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) {
+    yield [...source]
+    let adjacency_matrix = shallow_copy(matrix);
+    let visited = shallow_copy(matrix);
+    let parent_coordinates = shallow_copy(matrix);
     let coordinates = source;
-    let visited = [...matrix];
-    let queue = []
-    let path = [];
-    // let distance = {}
-    // let vertex_priority_queue = new 
+    let queue = [];
 
-    // let unvisited_nodes = new Array(matrix.length * matrix.length)
-    // console.log("unvisited: ", unvisited_nodes);
+    // setting all initial values for the source node within each data structure
+    adjacency_matrix[source[0]][source[1]] = 0;
+    coordinates = [source[0], source[1]];
+    visited[source[0]][source[1]] = true;
+    parent_coordinates[source[0]][source[1]] = null;
+    queue.push(coordinates);
+
 
     for (let row = 0; row < matrix.length; row++) {
         for (let col = 0; col < matrix[row].length; col++) {
-            if (source[0] === row && source[1] === col) {
-                adjacency_matrix[row][col] = 0;
-                coordinates = [row, col];
-                visited[row][col] = true;
-                queue.push(coordinates);
-            }
-            else {
+            if (!isEqual(source, [row, col])) {
+                parent_coordinates[row][col] = null;
                 adjacency_matrix[row][col] = Infinity;
                 visited[row][col] = false;
             }
-            // console.log("visited: ", visited[row][col])
         }
     }
 
@@ -61,22 +36,38 @@ export default function* dijkstra(matrix = [[]], source = [0, 0], final = [0,3])
             if (!result.done && !found) {
                 update_distance(adjacency_matrix[coordinates[0]][coordinates[1]], neighbors_coordinates, adjacency_matrix);
                 update_to_visited(neighbors_coordinates, visited);
+                update_parent(coordinates, neighbors_coordinates, parent_coordinates);
                 queue.push(neighbors_coordinates);
-                found = isEqual(neighbors_coordinates,final)
-                yield neighbors_coordinates;
-                
+                found = isEqual(neighbors_coordinates, end);
+                yield [...neighbors_coordinates];
+
             }
         }
         while (!result.done)
-
-        // found = isEqual(queue[0],final)
-
     }
 
-    for (let i = 0; i < path.length; i++) {
+    // yield visited;
+
+    // yield parent_coordinates;
+
+    // yield [...adjacency_matrix]
+
+    
+
+    let path = []
+    let current = parent_coordinates[end[0]][end[1]]
+    do {
+        path.push(current);
+        current = parent_coordinates[current[0]][current[1]];
+    }
+    while (current !== null)
+    console.log("printing array")
+    path = path.reverse();
+    for(let i = 0; i < path.length; i++)
+    {
         yield path[i];
     }
-
+    yield[...end];
 
 }
 
@@ -94,14 +85,19 @@ function isEqual(array1 = [], array2 = []) {
         return false;
 
     for (let i = 0; i < array1.length; i++) {
-        if (array1[i] !== array2[i])
-        {
+        if (array1[i] !== array2[i]) {
             return false
         }
     }
     return true;
 }
 
+
+function update_parent(parent_node_location, child_node_location, parent_coordinates) {
+    let row = child_node_location[0]
+    let column = child_node_location[1]
+    parent_coordinates[row][column] = parent_node_location
+}
 
 function* check_neighbors(node_location, visited) {
     let row = node_location[0];
@@ -118,7 +114,7 @@ function* check_neighbors(node_location, visited) {
         yield [row, LEFT];
     }
 
-    if (UP >= 0  && !visited[UP][column]) {
+    if (UP >= 0 && !visited[UP][column]) {
         yield [UP, column];
     }
     if (DOWN >= 0 && DOWN < visited.length && !visited[DOWN][column]) {
@@ -131,4 +127,14 @@ function update_to_visited(node_location, visited) {
     let row = node_location[0];
     let col = node_location[1];
     visited[row][col] = true;
+}
+
+function shallow_copy(array) {
+    const temp = [];
+
+    for (let i = 0; i < array.length; i++) {
+        temp.push([...array[i]])
+    }
+    // console.log('temp: ', temp)
+    return temp;
 }
