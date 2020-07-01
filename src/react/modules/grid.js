@@ -21,7 +21,7 @@ export default function Grid() {
     
     return <div className="grid visualizer">
     {grid.map((value, row_index) =>
-    <div className={`row row-${row_index}`}>
+    <div key={`row-${row_index}`}className={`row row-${row_index}`}>
             {grid.map((val, column_index) => 
 
                 // `form-control round-lg ${this.state.valid ? '' : 'error'}`

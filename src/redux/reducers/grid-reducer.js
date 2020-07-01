@@ -1,10 +1,10 @@
 import * as gridActions from "../actions/types/grid-types"
 
 const empty_STATE = [
-    [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false },{ type: "empty_node", visited: false }],
     [{ type: "start_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false },{ type: "empty_node", visited: false }],
-    [{ type: "empty_node", visited: false }, { type: "end_node", visited: false }, { type: "empty_node", visited: false },{ type: "empty_node", visited: false },],
     [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false },{ type: "empty_node", visited: false }],
+    [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false },{ type: "empty_node", visited: false },],
+    [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "end_node", visited: false }, { type: "empty_node", visited: false }],
     // [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false }],
     // [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false }],
     // [{ type: "empty_node", visited: false }, { type: "empty_node", visited: false }, { type: "empty_node", visited: false }],

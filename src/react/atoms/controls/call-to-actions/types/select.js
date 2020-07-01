@@ -1,11 +1,10 @@
 import React from 'react'
 import { BaseCTA } from "../abstractions/base-call-to-action";
-import "../../../../ui-kit/custom/choicebox.css"
 
 export const SelectCTA = ({
     className,
     onChange = () => { alert("onChange is not set!") },
-    ...props,
+    ...props
 }) => (
         <BaseCTA tag="select" className={"select "+ className} onChange={onChange}{...props}>
             <option value="bfs">Breadth First Search</option>
