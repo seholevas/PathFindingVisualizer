@@ -1,8 +1,12 @@
+import isEqual from "../helpers/2d-array-functions/is-equal";
+import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
+
+
 export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) {
     yield [...source]
-    let adjacency_matrix = shallow_copy(matrix);
-    let visited = shallow_copy(matrix);
-    let parent_coordinates = shallow_copy(matrix);
+    let adjacency_matrix = shallowCopy(matrix);
+    let visited = shallowCopy(matrix);
+    let parent_coordinates = shallowCopy(matrix);
     let coordinates = source;
     let queue = [];
 
@@ -46,14 +50,6 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
         while (!result.done)
     }
 
-    // yield visited;
-
-    // yield parent_coordinates;
-
-    // yield [...adjacency_matrix]
-
-    
-
     let path = []
     let current = parent_coordinates[end[0]][end[1]]
     do {
@@ -72,26 +68,11 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
 }
 
 function update_distance(prev_value, node_location, adjacency_matrix) {
-    // let prev_row = prev_node_location[0];
-    // let prev_column = prev_node_location[1];
     let row = node_location[0];
     let column = node_location[1];
     if (prev_value < adjacency_matrix[row][column])
         adjacency_matrix[row][column] = prev_value + 1;
 }
-
-function isEqual(array1 = [], array2 = []) {
-    if (array1.length !== array2.length)
-        return false;
-
-    for (let i = 0; i < array1.length; i++) {
-        if (array1[i] !== array2[i]) {
-            return false
-        }
-    }
-    return true;
-}
-
 
 function update_parent(parent_node_location, child_node_location, parent_coordinates) {
     let row = child_node_location[0]
@@ -127,14 +108,4 @@ function update_to_visited(node_location, visited) {
     let row = node_location[0];
     let col = node_location[1];
     visited[row][col] = true;
-}
-
-function shallow_copy(array) {
-    const temp = [];
-
-    for (let i = 0; i < array.length; i++) {
-        temp.push([...array[i]])
-    }
-    // console.log('temp: ', temp)
-    return temp;
 }

@@ -1,6 +1,9 @@
 import { getValueByElementId } from "../helpers/functions/get-value-by-element-id";
 import store from "../redux/stores/store"
 import dijkstra from "../algorithms/dijkstra"
+import updateNodeState from "../helpers/state-functions/update-node-state";
+import { dispatchedChangedNodeType } from "../redux/dispatchs/grid-dispatchs";
+import { sleep } from "../helpers/async-functions/sleep";
 
 function getAlgorithm(array = [[]], type = "mergesort") {
     if (type === "a*") {
@@ -42,8 +45,15 @@ export default async function startPathFinding() {
 
         let value = result.value
         console.log("value: ", value)
+        let shallow_matrix = updateNodeState(value, array);
+        console.log("shallow matrix: ", shallow_matrix)
+        console.log("shallow === array: ", shallow_matrix === array)
+
+        dispatchedChangedNodeType(shallow_matrix);
         // dispatchChangedArrayOrder(value);
         result = generator.next();
+        await sleep(1000);
+        
         // await sleep(1000 / getValueByElementId("speed"));
         // playing = await store.getState().settings
     }
