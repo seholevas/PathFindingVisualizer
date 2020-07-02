@@ -13,8 +13,11 @@
 // 13                 Q.enqueue(w)
 
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
-import { check_neighbors, update_to_visited, update_parent } from "./dijkstra"
+// import { check_neighbors, update_to_visited, update_parent } from "./dijkstra"
 import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
+import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
+import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
+import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 
 export function* breadthFirstSearch(matrix = [[]], start_coordinates = [2, 2], end_coordinates = [3, 3]) {
     yield start_coordinates;
@@ -36,7 +39,7 @@ export function* breadthFirstSearch(matrix = [[]], start_coordinates = [2, 2], e
             // yield vertex_coordinates;
         }
         else {
-            const generator = check_neighbors(vertex_coordinates, visited);
+            const generator = checkNeighbors(vertex_coordinates, visited);
             let result = generator.next();
 
             while (!result.done) {
@@ -45,8 +48,8 @@ export function* breadthFirstSearch(matrix = [[]], start_coordinates = [2, 2], e
                 if (visited[value[0]][value[1]] === false)
                 {
                     yield value;
-                    update_to_visited(value, visited);
-                    update_parent(vertex_coordinates,value,parent_matrix);
+                    updatetoVisited(value, visited);
+                    updateParent(vertex_coordinates,value,parent_matrix);
                     queue.push(value);
                 }    
                 result = generator.next();

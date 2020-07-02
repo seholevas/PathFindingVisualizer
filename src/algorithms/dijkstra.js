@@ -1,5 +1,11 @@
 import isEqual from "../helpers/2d-array-functions/is-equal";
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
+import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
+import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
+import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
+import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
+import { updateDistance } from "./helpers/matrix-helpers/setters-and-getters/update-distance";
+
 
 
 export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) {
@@ -32,15 +38,15 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
     let found = false;
     while (!found) {
         coordinates = queue.shift();
-        const generator = check_neighbors(coordinates, visited);
+        const generator = checkNeighbors(coordinates, visited);
         let result = null;
         do {
             result = generator.next();
             var neighbors_coordinates = result.value;
             if (!result.done && !found) {
-                update_distance(adjacency_matrix[coordinates[0]][coordinates[1]], neighbors_coordinates, adjacency_matrix);
-                update_to_visited(neighbors_coordinates, visited);
-                update_parent(coordinates, neighbors_coordinates, parent_coordinates);
+                updateDistance(adjacency_matrix[coordinates[0]][coordinates[1]], neighbors_coordinates, adjacency_matrix);
+                updatetoVisited(neighbors_coordinates, visited);
+                updateParent(coordinates, neighbors_coordinates, parent_coordinates);
                 queue.push(neighbors_coordinates);
                 found = isEqual(neighbors_coordinates, end);
                 yield [...neighbors_coordinates];
@@ -50,64 +56,6 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
         while (!result.done)
     }
 
-    let path = []
-    let current = parent_coordinates[end[0]][end[1]]
-    do {
-        path.push(current);
-        current = parent_coordinates[current[0]][current[1]];
-    }
-    while (current !== null)
-    path = path.reverse();
-    for(let i = 0; i < path.length; i++)
-    {
-        yield path[i];
-    }
-    yield[...end];
+    yield* traverseShortestPath(end, parent_coordinates)
 
-}
-
-function update_distance(prev_value, node_location, adjacency_matrix) {
-    let row = node_location[0];
-    let column = node_location[1];
-    if (prev_value < adjacency_matrix[row][column])
-        adjacency_matrix[row][column] = prev_value + 1;
-}
-
-export function update_parent(parent_node_location, child_node_location, parent_coordinates) {
-    let row = child_node_location[0]
-    let column = child_node_location[1]
-    parent_coordinates[row][column] = parent_node_location
-}
-
-export function* check_neighbors(node_location=[], visited=[[]]) {
-    let row = node_location[0];
-    let column = node_location[1];
-    const RIGHT = column + 1;
-    const LEFT = column - 1;
-    const UP = row - 1;
-    const DOWN = row + 1;
-
-
-    if (UP >= 0 && !visited[UP][column]) {
-        yield [UP, column];
-    }
-
-    if (RIGHT >= 0 && RIGHT < visited.length && !visited[row][RIGHT]) {
-        yield [row, RIGHT];
-    }
-    if (DOWN >= 0 && DOWN < visited.length && !visited[DOWN][column]) {
-        yield [DOWN, column];
-    }
-
-    if (LEFT >= 0 && !visited[row][LEFT]) {
-        yield [row, LEFT];
-    }
-
-
-}
-
-export function update_to_visited(node_location =[], visited =[[]]) {
-    let row = node_location[0];
-    let col = node_location[1];
-    visited[row][col] = true;
 }

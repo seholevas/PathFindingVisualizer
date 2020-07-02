@@ -6,6 +6,7 @@ import { dispatchedChangedNodeType } from "../redux/dispatchs/grid-dispatchs";
 import { sleep } from "../helpers/async-functions/sleep";
 import { dispatchedStartedSearch } from "../redux/dispatchs/settings-dispatchs";
 import { breadthFirstSearch } from "./breadth-first-search";
+import depthFirstSearch from "./depth-first-search";
 
 function getAlgorithm(array = [[]], type = "mergesort") {
     if (type === "a*") {
@@ -15,7 +16,7 @@ function getAlgorithm(array = [[]], type = "mergesort") {
         return breadthFirstSearch(array);
     }
     else if (type === "dfs") {
-        // return SelectionSort(array);
+        return depthFirstSearch(array);
     }
     else if (type === "dijkstra") {
         return dijkstra(array);
