@@ -57,7 +57,6 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
         current = parent_coordinates[current[0]][current[1]];
     }
     while (current !== null)
-    console.log("printing array")
     path = path.reverse();
     for(let i = 0; i < path.length; i++)
     {
@@ -74,13 +73,13 @@ function update_distance(prev_value, node_location, adjacency_matrix) {
         adjacency_matrix[row][column] = prev_value + 1;
 }
 
-function update_parent(parent_node_location, child_node_location, parent_coordinates) {
+export function update_parent(parent_node_location, child_node_location, parent_coordinates) {
     let row = child_node_location[0]
     let column = child_node_location[1]
     parent_coordinates[row][column] = parent_node_location
 }
 
-function* check_neighbors(node_location, visited) {
+export function* check_neighbors(node_location=[], visited=[[]]) {
     let row = node_location[0];
     let column = node_location[1];
     const RIGHT = column + 1;
@@ -88,23 +87,26 @@ function* check_neighbors(node_location, visited) {
     const UP = row - 1;
     const DOWN = row + 1;
 
-    if (RIGHT >= 0 && RIGHT < visited.length && !visited[row][RIGHT]) {
-        yield [row, RIGHT];
-    }
-    if (LEFT >= 0 && !visited[row][LEFT]) {
-        yield [row, LEFT];
-    }
 
     if (UP >= 0 && !visited[UP][column]) {
         yield [UP, column];
+    }
+
+    if (RIGHT >= 0 && RIGHT < visited.length && !visited[row][RIGHT]) {
+        yield [row, RIGHT];
     }
     if (DOWN >= 0 && DOWN < visited.length && !visited[DOWN][column]) {
         yield [DOWN, column];
     }
 
+    if (LEFT >= 0 && !visited[row][LEFT]) {
+        yield [row, LEFT];
+    }
+
+
 }
 
-function update_to_visited(node_location, visited) {
+export function update_to_visited(node_location =[], visited =[[]]) {
     let row = node_location[0];
     let col = node_location[1];
     visited[row][col] = true;

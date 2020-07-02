@@ -5,13 +5,14 @@ import updateNodeState from "../helpers/state-functions/update-node-state";
 import { dispatchedChangedNodeType } from "../redux/dispatchs/grid-dispatchs";
 import { sleep } from "../helpers/async-functions/sleep";
 import { dispatchedStartedSearch } from "../redux/dispatchs/settings-dispatchs";
+import { breadthFirstSearch } from "./breadth-first-search";
 
 function getAlgorithm(array = [[]], type = "mergesort") {
     if (type === "a*") {
         // return Merge(array);
     }
     else if (type === "bfs") {
-        // return BubbleSort(array);
+        return breadthFirstSearch(array);
     }
     else if (type === "dfs") {
         // return SelectionSort(array);
