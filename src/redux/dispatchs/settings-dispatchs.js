@@ -1,12 +1,12 @@
 import store from "../stores/store"
 import * as buttonDispatch from "../actions/action-creators/settings-action-creator"
 
-function dispatchedStartedPathFinding()
+export function dispatchedStartedSearch()
 {
     store.dispatch(buttonDispatch.pressedStart());
 }
 
-function dispatchedStoppedPathFinding()
+export function dispatchedStoppedSearch()
 {
     store.dispatch(buttonDispatch.pressedStop());
 }

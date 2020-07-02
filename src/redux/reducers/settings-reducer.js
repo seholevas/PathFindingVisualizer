@@ -6,7 +6,7 @@ export default function reducer(state = false, action)
     {
         return  action.payload.playing
     }
-    else if(action.type === buttonActions.PRESSED_CLEAR)
+    else if(action.type === buttonActions.PRESSED_STOP)
     {
         return  action.payload.playing
     }

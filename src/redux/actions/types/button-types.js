@@ -1,2 +1,3 @@
 export const PRESSED_START = "PRESSED_START";
+export const PRESSED_STOP = "PRESSED_STOP";
 export const PRESSED_CLEAR = "PRESSED_CLEAR";
