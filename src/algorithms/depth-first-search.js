@@ -37,9 +37,10 @@ export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_co
         if(coordinatesAreEqual(vertex_coordinates, end_node_coordinates))
         {
             found = true;
+            continue;
         }
 
-        if (!visited[vertex_coordinates[0]][vertex_coordinates[1]] && !found) {
+        // if (!visited[vertex_coordinates[0]][vertex_coordinates[1]] && !found) {
             updatetoVisited(vertex_coordinates, visited);
 
 
@@ -56,7 +57,7 @@ export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_co
 
                 result = generator.next();
             }
-        }
+        // }
     }
 
     yield* traverseShortestPath(end_node_coordinates, parent_matrix);

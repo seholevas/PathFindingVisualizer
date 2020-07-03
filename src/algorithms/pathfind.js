@@ -4,13 +4,14 @@ import dijkstra from "../algorithms/dijkstra"
 import updateNodeState from "../helpers/state-functions/update-node-state";
 import { dispatchedChangedNodeType } from "../redux/dispatchs/grid-dispatchs";
 import { sleep } from "../helpers/async-functions/sleep";
-import { dispatchedStartedSearch } from "../redux/dispatchs/settings-dispatchs";
+import { dispatchedStartedSearch, dispatchedStoppedSearch } from "../redux/dispatchs/settings-dispatchs";
 import { breadthFirstSearch } from "./breadth-first-search";
 import depthFirstSearch from "./depth-first-search";
+import aStar from "./helpers/matrix-helpers/a-star";
 
 function getAlgorithm(array = [[]], type = "mergesort") {
     if (type === "a*") {
-        // return Merge(array);
+        return aStar(array);
     }
     else if (type === "bfs") {
         return breadthFirstSearch(array);
@@ -59,9 +60,8 @@ export default async function startPathFinding() {
         let shallow_matrix = updateNodeState(value, array);
         dispatchedChangedNodeType(shallow_matrix);
         result = generator.next();
-        await sleep(1000 / getValueByElementId("speed"));
         playing = store.getState().settings
-        // await sleep(1000 / getValueByElementId("speed"));    }
-        // dispatchSortStopped()
+        await sleep(1000 / getValueByElementId("speed"));
     }
+    dispatchedStoppedSearch();
 }

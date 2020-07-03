@@ -1,4 +1,5 @@
 import * as buttonActions from "../types/button-types";
+import * as sliderActions from "../types/slider-types";
 import * as gridActions from "../types/grid-types";
 
 
@@ -20,5 +21,16 @@ export function changedNodeType(array = [[]]) {
         payload: {
             grid: array
         }
+    }
+}
+
+
+export function changedMatrixSize(array = [[]])
+{
+    return {
+        type: sliderActions.CHANGED_MATRIX_SIZE,
+        payload: {
+            grid: array
+        } 
     }
 }

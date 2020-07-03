@@ -10,3 +10,9 @@ export function dispatchedClearPathFinding(array =[[]])
 {
     store.dispatch(gridDispatch.pressedClear(array));
 }
+
+export function dispatchedChangedMatrixSize(matrix =[[]])
+{
+    // console.log("in dispatched function")
+    store.dispatch(gridDispatch.changedMatrixSize(matrix));
+}
