@@ -5,14 +5,16 @@ import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-nei
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import { updateDistance } from "./helpers/matrix-helpers/setters-and-getters/update-distance";
+import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 
 
 export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) {
-    yield [...source]
+    // yield [...source]
+    let visited_coordinates = [];
     let adjacency_matrix = shallowCopy(matrix);
-    let visited = shallowCopy(matrix);
-    let parent_coordinates = shallowCopy(matrix);
+    let visited = shallowCopy(matrix, false);
+    let parent_coordinates = shallowCopy(matrix, null);
     let coordinates = source;
     let queue = [];
 
@@ -22,6 +24,7 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
     visited[source[0]][source[1]] = true;
     parent_coordinates[source[0]][source[1]] = null;
     queue.push(coordinates);
+    visited_coordinates.push(coordinates);
 
 
     for (let row = 0; row < matrix.length; row++) {
@@ -49,13 +52,14 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
                 updateParent(coordinates, neighbors_coordinates, parent_coordinates);
                 queue.push(neighbors_coordinates);
                 found = isEqual(neighbors_coordinates, end);
-                yield [...neighbors_coordinates];
-
+                // yield [...neighbors_coordinates];
+                visited_coordinates.push(neighbors_coordinates);
             }
         }
         while (!result.done)
     }
-
-    yield* traverseShortestPath(end, parent_coordinates)
+    yield visited_coordinates;
+    yield getShortestPath(end, parent_coordinates);
+    // yield* traverseShortestPath(end, parent_coordinates)
 
 }

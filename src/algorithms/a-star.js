@@ -6,9 +6,12 @@ import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/co
 import {PriorityQueue} from "../data-structures/priority-queue"
 import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
+import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 0], end_cordinates = [3, 3]) {
+    
     var priority_queue = new PriorityQueue();
+    let visited_coordinates = [];
     let parent_matrix = shallowCopy(adjacency_matrix, null);
     let visited = shallowCopy(adjacency_matrix, false);
     let distance_matrix = shallowCopy(adjacency_matrix, Infinity);
@@ -21,7 +24,8 @@ export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 
         // let f_cost = tuple[0];
         let current_coordinates = q_item.element;
         updatetoVisited(current_coordinates,visited);
-        yield [...current_coordinates];
+        visited_coordinates.push(current_coordinates);
+        // yield [...current_coordinates];
 
         if(coordinatesAreEqual(current_coordinates,end_cordinates))
         {
@@ -58,8 +62,9 @@ export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 
             result = generator.next();
         }
     }
-
-    yield* traverseShortestPath(end_cordinates,parent_matrix);
+    yield visited_coordinates;
+    yield getShortestPath(end_cordinates, parent_matrix);
+    // yield* traverseShortestPath(end_cordinates,parent_matrix);
 
 
 
