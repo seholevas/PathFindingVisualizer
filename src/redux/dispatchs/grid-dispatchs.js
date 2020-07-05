@@ -6,13 +6,12 @@ export function dispatchedChangedNodeType(array = [[]])
     store.dispatch(gridDispatch.changedNodeType(array));
 }
 
-export function dispatchedClearPathFinding(array =[[]])
+export function dispatchedClearMatrix(array =[[]])
 {
     store.dispatch(gridDispatch.pressedClear(array));
 }
 
 export function dispatchedChangedMatrixSize(matrix =[[]])
 {
-    // console.log("in dispatched function")
     store.dispatch(gridDispatch.changedMatrixSize(matrix));
 }

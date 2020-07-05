@@ -3,19 +3,21 @@ import MasterCTA from '../atoms/controls/call-to-actions/abstractions/master-cal
 import startPathFinding from "../../algorithms/pathfind"
 import { dispatchedStoppedSearch } from '../../redux/dispatchs/settings-dispatchs'
 import { changeArraySize } from '../../helpers/state-functions/change-array-size'
+import { clearMatrix} from '../../helpers/state-functions/clear-matrix'
+
 
 export default function Controls() {
     return (
         <div className="grid">
             <div className={"flex row row-algorithms"} >
-                <MasterCTA type={"select"} id={"algorithms"}onChange={() => { }}></MasterCTA>
+                <MasterCTA type={"select"} id={"algorithms"}onChange={() => {clearMatrix();}}></MasterCTA>
             </div>
 
             <div className="flex row row-buttons">
                 <MasterCTA type={"button"} onClick={() => {dispatchedStoppedSearch()}}>Stop</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     startPathFinding();}}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={() => { }}>Clear</MasterCTA>
+                <MasterCTA type={"button"} onClick={() => { clearMatrix(); }}>Clear</MasterCTA>
 
             </div>
 

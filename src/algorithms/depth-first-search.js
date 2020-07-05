@@ -14,11 +14,16 @@ import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-nei
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
 import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
+import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 
 export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_coordinates = [2, 2], end_node_coordinates = [0, 0]) {
     // data structure for storing next values
     let stack = [];
+
+    // coordinates that have been visited
+    let visited_coordinates = [];
+
     // matrix that shows if a node at index [i][j] has been visited
     let visited = shallowCopy(adjacency_matrix, false);
     // stores whether a node at [i][j] has a parent node. if so, stores the coordinates of the parent at [i][j], else null values
@@ -31,12 +36,14 @@ export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_co
     while (stack.length !== 0 && !found) {
         // the current verticies.
         let vertex_coordinates = stack.pop();
+        visited_coordinates.push(vertex_coordinates);
         // yielding the coordinates
-        yield [...vertex_coordinates];
+        // yield [...vertex_coordinates];
 
         if(coordinatesAreEqual(vertex_coordinates, end_node_coordinates))
         {
             found = true;
+            yield visited_coordinates;
             continue;
         }
 
@@ -60,6 +67,8 @@ export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_co
         // }
     }
 
-    yield* traverseShortestPath(end_node_coordinates, parent_matrix);
+    // yield* traverseShortestPath(end_node_coordinates, parent_matrix);
+
+    yield getShortestPath(end_node_coordinates, parent_matrix);
 }
 

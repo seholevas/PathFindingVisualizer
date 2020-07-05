@@ -1,11 +1,11 @@
-import shallowCopy from "../../../helpers/2d-array-functions/shallow-copy"
-import { checkNeighbors } from "./async-helpers/check-neighbors";
-import { updateParent } from "./setters-and-getters/update-parent";
-import coordinatesAreEqual from "./setters-and-getters/coordinates-are-equal";
+import shallowCopy from "../helpers/2d-array-functions/shallow-copy"
+import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
+import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
+import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
 // import {PriorityQueue} from "../../../data-structures/min-priority-queue";
-import {PriorityQueue} from "../../../data-structures/priority-queue"
-import traverseShortestPath from "./async-helpers/traverse-shortest-path";
-import { updatetoVisited } from "./setters-and-getters/update-to-visited";
+import {PriorityQueue} from "../data-structures/priority-queue"
+import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
+import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 
 export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 0], end_cordinates = [3, 3]) {
     var priority_queue = new PriorityQueue();

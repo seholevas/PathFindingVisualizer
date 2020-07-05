@@ -1,3 +1,4 @@
+import * as buttonActions from "../actions/types/button-types"
 import * as gridActions from "../actions/types/grid-types"
 import * as sliderActions from "../actions/types/slider-types"
 
@@ -16,6 +17,11 @@ export default function reducer(state = INITIAL_STATE, action) {
         return  action.payload.grid;
     }
     if(action.type === sliderActions.CHANGED_MATRIX_SIZE)
+    {
+        return action.payload.grid;
+    }
+
+    if(action.type === buttonActions.PRESSED_CLEAR)
     {
         return action.payload.grid;
     }

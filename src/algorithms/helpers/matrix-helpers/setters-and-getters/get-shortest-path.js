@@ -1,9 +1,10 @@
-export default function* traverseShortestPath(end_node_coordinates = [], parent_coordinates_matrix = [[]]) {
+export default function getShortestPath(end_node_coordinates = [], parent_coordinates_matrix = [[]]) {
     let path = []
     let row = end_node_coordinates[0];
     let column = end_node_coordinates[1]
     let current = parent_coordinates_matrix[row][column];
 
+    path.push(end_node_coordinates);
     do 
     {
         path.push(current);
@@ -13,10 +14,9 @@ export default function* traverseShortestPath(end_node_coordinates = [], parent_
     }
     while (current !== null)
     path = path.reverse();
-    for (let i = 0; i < path.length; i++) {
-        yield path[i];
-    }
-    yield [...end_node_coordinates];
+    // for (let i = 0; i < path.length; i++) {
+    //     yield path[i];
+    // }
+    return [...path];
 
 }
-
