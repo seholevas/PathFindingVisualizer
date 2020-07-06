@@ -21,6 +21,35 @@ export default function updateNodeType(id = "") {
             default:
                 break;
         }
+
+
+        switch(node["type"])
+        {
+            case "wall_node":
+                nodeDispatch.dispatchedAddedWall(coordinates);
+                break;
+            case "additional_destination_node":
+                nodeDispatch.dispatchedAddedAdditionalDestination(coordinates);
+                break;
+            case "weight_node":
+                nodeDispatch.dispatchedAddedWeight(coordinates);
+                break;
+            default:
+                break;
+        }
+        switch (node_type) {
+            case "additional_destination_node":
+                nodeDispatch.dispatchedRemovedAdditionalDestination(coordinates);
+                break;
+            case "wall_node":
+                nodeDispatch.dispatchedRemovedWall([coordinates[0], coordinates[1]]);
+                break;
+            case "weight_node":
+                nodeDispatch.dispatchedRemovedWeight(coordinates);
+                break;
+            default:
+                break;
+        }
     }
     else if (node["type"] !== "start_node" && node["type"] !== "end_node") {
         switch(node["type"])
@@ -45,7 +74,7 @@ export default function updateNodeType(id = "") {
                 nodeDispatch.dispatchedAddedWall([coordinates[0], coordinates[1]]);
                 break;
             case "weight_node":
-                nodeDispatch.dispatchedRemovedWeight(coordinates);
+                nodeDispatch.dispatchedAddedWeight(coordinates);
                 break;
             default:
                 break;

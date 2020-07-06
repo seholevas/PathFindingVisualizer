@@ -4,17 +4,16 @@ export function addedWeight(coordinates) {
     return {
         type: nodeActions.ADDED_WEIGHT,
         payload: {
-            added_weight_coordinates: coordinates
+            coordinates: coordinates
         }
     }
 }
 
-export function removedWeight(coordinates)
-{
+export function removedWeight(coordinates) {
     return {
         type: nodeActions.REMOVED_WEIGHT,
         payload: {
-          coordinates: coordinates
+            coordinates: coordinates
         }
     }
 }
@@ -24,17 +23,16 @@ export function addedAdditionalDestination(coordinates) {
     return {
         type: nodeActions.ADDED_ADDITIONAL_DESTINATION_NODE,
         payload: {
-            added_weight_coordinates: coordinates
+            coordinates: coordinates
         }
     }
 }
 
-export function removedAdditionalDestination(coordinates)
-{
+export function removedAdditionalDestination(coordinates) {
     return {
         type: nodeActions.REMOVED_ADDITIONAL_DESTINATION_NODE,
         payload: {
-          coordinates: coordinates
+            coordinates: coordinates
         }
     }
 }

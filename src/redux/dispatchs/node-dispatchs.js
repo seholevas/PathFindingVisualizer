@@ -8,7 +8,7 @@ export function dispatchedAddedWall(coordinates = []) {
     store.dispatch(nodeDispatched.addedWall(coordinates));
 }
 
-export function dispatchAddedWeight(coordinates = []) {
+export function dispatchedAddedWeight(coordinates = []) {
     store.dispatch(nodeDispatched.addedWeight(coordinates));
 }
 

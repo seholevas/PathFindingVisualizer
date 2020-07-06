@@ -3,9 +3,9 @@ import * as nodeActions from "../actions/types/node-types";
 const INITIAL_STATE = {
     start_coordinates: [2, 2],
     end_coordinates: [3, 3],
-    additional_destination_coordinates: [[]],
+    additional_destination_coordinates: [],
     wall_coordinates: [],
-    weight_coordinates: [[]],
+    weight_coordinates: [],
 
 }
 
@@ -27,8 +27,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         return {
             ...state, wall_coordinates: [...state.wall_coordinates.filter(
                 (coordinates) =>
-                    (coordinates[0] != action.payload.coordinates[0])
-                    && (coordinates[1] != action.payload.coordinates[1]))]
+                    (coordinates[0] !== action.payload.coordinates[0])
+                    && (coordinates[1] !== action.payload.coordinates[1]))]
         }
     }
 
@@ -41,8 +41,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         return {
             ...state, weight_coordinates: [...state.weight_coordinates.filter(
                 (coordinates) =>
-                    (coordinates[0] != action.payload.coordinates[0])
-                    && (coordinates[1] != action.payload.coordinates[1]))]
+                    (coordinates[0] !== action.payload.coordinates[0])
+                    && (coordinates[1] !== action.payload.coordinates[1]))]
         }
     }
 
@@ -56,8 +56,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         return {
             ...state, additional_destination_coordinates: [...state.additional_destination_coordinates.filter(
                 (coordinates) =>
-                    (coordinates[0] != action.payload.coordinates[0])
-                    && (coordinates[1] != action.payload.coordinates[1]))]
+                    (coordinates[0] !== action.payload.coordinates[0])
+                    && (coordinates[1] !== action.payload.coordinates[1]))]
         }
     }
     return state
