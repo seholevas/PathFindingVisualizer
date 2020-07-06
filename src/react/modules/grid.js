@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import MasterNode from "../atoms/nodes/abstraction/master-node-list"
 import '../../css/grid-visualizer.css'
 import "../../css/node.css"
+import updateNodeType from '../../helpers/dom-helpers/update-node-type';
 
 export default function Grid() {
     // const selector = getGridSelector();
@@ -25,8 +26,8 @@ export default function Grid() {
             {grid.map((val, column_index) => 
 
                 // `form-control round-lg ${this.state.valid ? '' : 'error'}`
-            <MasterNode key={`${row_index}-${column_index}`} id={`${row_index}-${column_index}`} className={`flex-item visited-${value[column_index]['visited']} shortest-path-${value[column_index]['shortest_path']}` } type={value[column_index]['type']}>
-                {`${row_index}-${column_index}`}
+            <MasterNode key={`${row_index}-${column_index}`} id={`${row_index}-${column_index}`} type={value[column_index]['type']} className={`flex-item visited-${value[column_index]['visited']} shortest-path-${value[column_index]['shortest_path']}`} onClick={(event)=>{updateNodeType(event.target.id)}} >
+                {/* {`${row_index}-${column_index}`} */}
                 </MasterNode>
             )}
             </div>

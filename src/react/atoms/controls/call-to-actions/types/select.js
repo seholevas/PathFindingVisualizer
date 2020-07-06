@@ -7,9 +7,6 @@ export const SelectCTA = ({
     ...props
 }) => (
         <BaseCTA tag="select" className={"select "+ className} onChange={onChange}{...props}>
-            <option value="bfs">Breadth First Search</option>
-            <option value="dfs">Depth First Search</option>
-            <option value="dijkstra">Dijkstra's</option>
-            <option value="a*">A*</option>
+            
         </BaseCTA>
     )

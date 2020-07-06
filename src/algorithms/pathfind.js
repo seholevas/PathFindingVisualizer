@@ -1,7 +1,7 @@
 import { getValueByElementId } from "../helpers/functions/get-value-by-element-id";
 import store from "../redux/stores/store"
 import dijkstra from "../algorithms/dijkstra"
-import updateNodeState, { changeNodeToVisited, changeNodeToShortestPath } from "../helpers/state-functions/update-node-state";
+import { changeNodeToVisited, changeNodeToShortestPath } from "../helpers/state-functions/update-node-state";
 import { dispatchedChangedNodeType } from "../redux/dispatchs/grid-dispatchs";
 import { sleep } from "../helpers/async-functions/sleep";
 import { dispatchedStartedSearch, dispatchedStoppedSearch } from "../redux/dispatchs/settings-dispatchs";
@@ -42,7 +42,7 @@ export default async function startPathFinding() {
     }
 
     dispatchedStartedSearch();
-    playing = store.getState().settings;
+    playing = await store.getState().settings;
 
     // console.log("playing: ", playing);
     // console.log("grid: ", array);
@@ -61,9 +61,9 @@ export default async function startPathFinding() {
 
         let copy_matrix = changeNodeToVisited(visited_nodes[i], array);
         dispatchedChangedNodeType(copy_matrix);
-        playing = store.getState().settings;
+        playing = await store.getState().settings;
         i++;
-        await sleep(1000 / getValueByElementId("speed"));
+        await sleep(500 / getValueByElementId("speed"));
 
     }
 
@@ -73,7 +73,7 @@ export default async function startPathFinding() {
 
         let copy_matrix = changeNodeToShortestPath(shortest_path_nodes[i], array);
         dispatchedChangedNodeType(copy_matrix);
-        playing = store.getState().settings;
+        playing = await store.getState().settings;
         i++;
         await sleep(500 / getValueByElementId("speed"));
 

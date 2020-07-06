@@ -3,6 +3,7 @@ import { AdditionalDestinationNode } from '../additional-destination-node'
 import { EndNode } from '../end-node'
 import { EmptyNode } from '../empty-node'
 import { WallNode } from '../wall-node'
+import { WeightNode } from '../weight-node'
 import { StartNode } from '../start-node'
 
 
@@ -12,6 +13,7 @@ const components = {
     end_node: EndNode,
     start_node: StartNode,
     wall_node: WallNode,
+    weight_node: WeightNode
     
 }
 

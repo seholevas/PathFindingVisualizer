@@ -1,19 +1,8 @@
-// procedure DFS_iterative(G, v) is
-//     let S be a stack
-//     S.push(v)
-//     while S is not empty do
-//         v = S.pop()
-//         if v is not labeled as discovered then
-//             label v as discovered
-//             for all edges from v to w in G.adjacentEdges(v) do 
-//                 S.push(w)
-
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
-import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 

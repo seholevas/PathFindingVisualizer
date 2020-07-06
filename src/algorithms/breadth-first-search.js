@@ -1,12 +1,9 @@
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
-// import { check_neighbors, update_to_visited, update_parent } from "./dijkstra"
-import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
 import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path"
 export function* breadthFirstSearch(matrix = [[]], start_coordinates = [0, 0], end_coordinates = [3,3]) {
-    // yield start_coordinates;
     let visited_coordinates = [];
     let queue = [];
     let visited = shallowCopy(matrix, false);
@@ -24,8 +21,6 @@ export function* breadthFirstSearch(matrix = [[]], start_coordinates = [0, 0], e
             found = true;
             yield visited_coordinates;
             
-            // yield* traverseShortestPath(end_coordinates,parent_matrix);
-            // yield vertex_coordinates;
         }
         else {
             const generator = checkNeighbors(vertex_coordinates, visited);

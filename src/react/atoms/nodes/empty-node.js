@@ -4,10 +4,11 @@ import {BaseNode} from "./abstraction/base-node"
 
 export const EmptyNode = ({
     className,
-    // onClick,
+    onClick,
     ...props
 }) =>(
     // onClick={onClick}
-    <BaseNode className={className+ " node node-empty"} {...props}>
+    // onClick={(event)=>{updateWeight(event.target.id); console.log("changed to weight node!: ", event.target.id);}} onDoubleClick={()=>{console.log("changed to additional destination node!")}} onMouseDown={()=> {console.log("mouse down!")}} onMouseMove={()=>{console.log("mouse moved!")}} onMouseUp={()=>{console.log("mouse up!")}}
+    <BaseNode className={"node node-empty " + className} onClick={onClick} {...props}>
     </BaseNode>
 )

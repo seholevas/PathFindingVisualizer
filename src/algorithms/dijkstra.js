@@ -1,6 +1,5 @@
 import isEqual from "../helpers/2d-array-functions/is-equal";
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
-import traverseShortestPath from "./helpers/matrix-helpers/async-helpers/traverse-shortest-path";
 import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
