@@ -6,7 +6,7 @@ import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/co
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 
-export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_coordinates = [2, 2], end_node_coordinates = [0, 0]) {
+export default function* depthFirstSearch(adjacency_matrix = [[]], start_node_coordinates = [2, 2], end_node_coordinates = [0, 0],additional_destinations, walls, weights) {
     // data structure for storing next values
     let stack = [];
 

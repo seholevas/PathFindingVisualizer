@@ -9,18 +9,18 @@ import { breadthFirstSearch } from "./breadth-first-search";
 import depthFirstSearch from "./depth-first-search";
 import aStar from "./a-star";
 
-function getAlgorithm(array = [[]], type = "mergesort") {
+function getAlgorithm(array = [[]], type = "mergesort", start_coordinates, end_coordinates, additional_destinations, walls, weights) {
     if (type === "a*") {
-        return aStar(array);
+        return aStar(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
     }
     else if (type === "bfs") {
-        return breadthFirstSearch(array);
+        return breadthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
     }
     else if (type === "dfs") {
-        return depthFirstSearch(array);
+        return depthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
     }
     else if (type === "dijkstra") {
-        return dijkstra(array);
+        return dijkstra(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
     }
     // else if (type === "insertionsort") {
     //     return InsertionSort(array);
@@ -36,6 +36,11 @@ function getAlgorithm(array = [[]], type = "mergesort") {
 export default async function startPathFinding() {
     var array = store.getState().grid;
     let playing = store.getState().settings;
+    let start_coordinates = store.getState().nodes.start_coordinates;
+    let end_coordinates = store.getState().nodes.end_coordinates;
+    let weights = store.getState().nodes.weight_coordinates;
+    let walls = store.getState().nodes.wall_coordinates;
+    let additional_destinations = store.getState().nodes.additional_destination_coordinates;
 
     if (playing) {
         return;
@@ -49,10 +54,10 @@ export default async function startPathFinding() {
 
 
     const pathFindingType = getValueByElementId("algorithms");
-    const generator = getAlgorithm(array, pathFindingType);
-    
+    const generator = getAlgorithm(array, pathFindingType, start_coordinates, end_coordinates, additional_destinations, walls, weights);
+
     let visited_nodes = generator.next().value;
-    
+
     let shortest_path_nodes = generator.next().value;
 
 

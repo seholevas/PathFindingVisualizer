@@ -3,7 +3,7 @@ import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-nei
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path"
-export function* breadthFirstSearch(matrix = [[]], start_coordinates = [0, 0], end_coordinates = [3,3]) {
+export function* breadthFirstSearch(matrix = [[]], start_coordinates = [0, 0], end_coordinates = [3,3], additional_destinations, walls, weights) {
     let visited_coordinates = [];
     let queue = [];
     let visited = shallowCopy(matrix, false);

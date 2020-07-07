@@ -22,17 +22,20 @@ export default function Controls() {
                 <MasterCTA type={"select"} id={"node-types"} onChange={() => { }}>
                     <option value="additional_destination_node">Additional Destination Node</option>
                     {/* <option value="empty_node">Additional Destination Node</option> */}
+                    <option value="empty_node">Empty Node</option>
+                    <option value="end_node">End Node</option>
+                    <option value="start_node">Start Node</option>
                     <option value="wall_node">Wall Node</option>
                     <option value="weight_node">Weight Node</option>
                 </MasterCTA>
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch() }}>Stop</MasterCTA>
+                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearMatrix(false);}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();            
                 }}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={async() => { dispatchedStoppedSearch(); clearMatrix(); }}>Clear</MasterCTA>
+                <MasterCTA type={"button"} onClick={async() => { dispatchedStoppedSearch(); clearMatrix(true); }}>Clear All</MasterCTA>
 
             </div>
 

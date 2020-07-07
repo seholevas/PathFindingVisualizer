@@ -6,7 +6,7 @@ import {PriorityQueue} from "../data-structures/priority-queue"
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
-export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 0], end_cordinates = [3, 3]) {
+export default function* aStar(adjacency_matrix = [[]], start_coordinates = [0, 0], end_cordinates = [3, 3], additional_destinations =[[]], walls=[[]], weights=[[]]) {
     
     var priority_queue = new PriorityQueue();
     let visited_coordinates = [];

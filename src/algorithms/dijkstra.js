@@ -5,24 +5,25 @@ import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/up
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import { updateDistance } from "./helpers/matrix-helpers/setters-and-getters/update-distance";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
+import { PriorityQueue } from "../data-structures/priority-queue";
 
 
 
-export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) {
+export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3], additional_destinations, walls, weights) {
     // yield [...source]
     let visited_coordinates = [];
     let adjacency_matrix = shallowCopy(matrix);
     let visited = shallowCopy(matrix, false);
     let parent_coordinates = shallowCopy(matrix, null);
     let coordinates = source;
-    let queue = [];
-
+    // let queue = [];
+    let queue = new PriorityQueue();
     // setting all initial values for the source node within each data structure
     adjacency_matrix[source[0]][source[1]] = 0;
     coordinates = [source[0], source[1]];
     visited[source[0]][source[1]] = true;
     parent_coordinates[source[0]][source[1]] = null;
-    queue.push(coordinates);
+    queue.enqueue(coordinates, 0);
     visited_coordinates.push(coordinates);
 
 
@@ -39,17 +40,17 @@ export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3]) 
 
     let found = false;
     while (!found) {
-        coordinates = queue.shift();
+        coordinates = queue.dequeue().element;
         const generator = checkNeighbors(coordinates, visited);
         let result = null;
         do {
             result = generator.next();
             var neighbors_coordinates = result.value;
             if (!result.done && !found) {
-                updateDistance(adjacency_matrix[coordinates[0]][coordinates[1]], neighbors_coordinates, adjacency_matrix);
+                updateDistance(adjacency_matrix[coordinates[0]][coordinates[1]], neighbors_coordinates, adjacency_matrix, weights);
                 updatetoVisited(neighbors_coordinates, visited);
                 updateParent(coordinates, neighbors_coordinates, parent_coordinates);
-                queue.push(neighbors_coordinates);
+                queue.enqueue(neighbors_coordinates,adjacency_matrix[coordinates[0]][coordinates[1]]);
                 found = isEqual(neighbors_coordinates, end);
                 // yield [...neighbors_coordinates];
                 visited_coordinates.push(neighbors_coordinates);

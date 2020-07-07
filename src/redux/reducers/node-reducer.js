@@ -1,8 +1,8 @@
 import * as nodeActions from "../actions/types/node-types";
 
 const INITIAL_STATE = {
-    start_coordinates: [2, 2],
-    end_coordinates: [3, 3],
+    start_coordinates: [5, 5],
+    end_coordinates: [9, 9],
     additional_destination_coordinates: [],
     wall_coordinates: [],
     weight_coordinates: [],

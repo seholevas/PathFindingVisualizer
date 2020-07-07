@@ -18,7 +18,7 @@ export function dispatchedMovedStart(coordinates = []) {
 }
 
 export function dispatchedMovedEnd(coordinates = []) {
-    store.dispatch(nodeDispatched.movedStart(coordinates))
+    store.dispatch(nodeDispatched.movedEnd(coordinates))
 }
 
 export function dispatchedRemovedAdditionalDestination(coordinates = []) {

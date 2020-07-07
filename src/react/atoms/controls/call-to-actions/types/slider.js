@@ -3,8 +3,8 @@ import { BaseCTA } from "../abstractions/base-call-to-action";
 
 export const RangedSliderCTA = ({
     // id,
-    min = "1",
-    max = "150",
+    min = "5",
+    max = "15",
     className,
     onChange,
     ...props
