@@ -4,13 +4,16 @@ import startPathFinding from "../../algorithms/pathfind"
 import { dispatchedStoppedSearch } from '../../redux/dispatchs/settings-dispatchs'
 import { changeArraySize } from '../../helpers/state-functions/change-array-size'
 import { clearMatrix } from '../../helpers/state-functions/clear-matrix'
-
+import "../../css/choicebox.css"
+import "../../css/button.css"
+import "../../css/slider.css"
+import "../../css/controls.css"
 
 export default function Controls() {
     return (
-        <div className="grid">
+        <div className="grid controls">
             <div className={"flex row row-algorithms"} >
-                <MasterCTA type={"select"} id={"algorithms"} onChange={() => { clearMatrix(); }}>
+                <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { clearMatrix(); }}>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
                     <option value="dijkstra">Dijkstra's</option>
@@ -19,7 +22,7 @@ export default function Controls() {
             </div>
 
             <div className={"flex row row-node-types"}>
-                <MasterCTA type={"select"} id={"node-types"} onChange={() => { }}>
+                <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => { }}>
                     <option value="additional_destination_node">Additional Destination Node</option>
                     {/* <option value="empty_node">Additional Destination Node</option> */}
                     <option value="empty_node">Empty Node</option>

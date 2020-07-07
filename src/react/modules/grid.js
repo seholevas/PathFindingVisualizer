@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import MasterNode from "../atoms/nodes/abstraction/master-node-list"
+import nodeClicked from "../../helpers/action-listeners/nodes/on-click"
 import '../../css/grid-visualizer.css'
 import "../../css/node.css"
-import nodeClicked from "../../helpers/action-listeners/nodes/on-click"
 // import { grabItem, releaseItem, holdingItem } from '../../helpers/action-listeners/on-mouse';
 
 export default function Grid() {

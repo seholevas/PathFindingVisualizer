@@ -21,6 +21,7 @@ function _updatePressedNodeCoordinates(id) {
     const coordinates = _getIdCoordinates(id);
     const grid = store.getState().grid
     node = grid[coordinates[0]][coordinates[1]];
+    return node;
 }
 
 export function grabItem(id) {

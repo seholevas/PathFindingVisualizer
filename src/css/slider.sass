@@ -1,0 +1,23 @@
+$primary-color: #E1332D
+$outline-color: #FFF
+
+.slider
+    // height: 140px
+    // width: 140px
+    &::-moz-range-thumb
+        background: lighten($primary-color, 3%)
+        border: darken($primary-color, 4%)
+        width: 40px
+        &:hover
+            background: darken($primary-color,1.5%)
+            cursor: pointer
+            
+        // width: 40px
+        // height: 40px
+        // radius: 10px
+    &::-moz-range-track
+        background-color: lighten($primary-color, 3%)
+        // border-radius: 50%
+        
+
+    

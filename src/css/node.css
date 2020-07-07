@@ -1,15 +1,13 @@
-/* .node-empty {
-  background: #F3BB45;
-} */
-
-.node-start
-{
-  background: #00C49A
+.node {
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+  border-radius: 2px;
+  color: #483C46;
 }
 
-.node-end
-{
-  background: #156064
+.node-empty {
+  background: #e3e3e3;
 }
 
 .visited-false {
@@ -20,8 +18,17 @@
   background: #F3BB45;
 }
 
-.shortest-path-true
-{
-  background: fuchsia;
+.node-wall {
+  background: #483C46;
 }
+
+.shortest-path-true {
+  background: #DB5A42;
+}
+
+svg {
+  display: inline-block;
+  margin: auto;
+}
+
 /*# sourceMappingURL=node.css.map */
