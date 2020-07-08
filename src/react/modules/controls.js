@@ -13,12 +13,12 @@ export default function Controls() {
     return (
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
-                <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { clearMatrix(); }}>
+                <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { }}>
                 <option disabled>Choose A Path Finding Algorithm</option>
+                    <option value="a*">A*</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
                     <option value="dijkstra">Dijkstra's</option>
-                    <option value="a*">A*</option>
                 </MasterCTA>
             </div>
 

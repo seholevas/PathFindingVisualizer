@@ -6,7 +6,7 @@ export default function getShortestPath(end_node_coordinates = [], parent_coordi
     
     if(current === null)
     {
-        return [] 
+        return;
     }
 
     path.push(end_node_coordinates);

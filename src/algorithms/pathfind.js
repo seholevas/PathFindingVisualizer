@@ -76,7 +76,7 @@ export default async function startPathFinding() {
 
     array = await store.getState().grid;
     i = 0;
-    if(shortest_path_nodes.length === 0)
+    if(shortest_path_nodes === undefined)
     {
         alert("There is no path to the end desination!")
         return;
