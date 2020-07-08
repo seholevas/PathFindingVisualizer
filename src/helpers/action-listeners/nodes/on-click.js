@@ -60,13 +60,13 @@ function _addNodeToReducer(node_type, coordinates)
             dispatchedMovedEnd(coordinates);
             break;
         case "additional_destination_node":
-            dispatchedAddedAdditionalDestination(coordinates)
+            dispatchedAddedAdditionalDestination(coordinates, coordinates);
             break;
         case "wall_node":
-            dispatchedAddedWall(coordinates)
+            dispatchedAddedWall(coordinates, coordinates);
             break;
         case "weight_node":
-            dispatchedAddedWeight(coordinates)
+            dispatchedAddedWeight(coordinates, coordinates);
             break;
         default:
             // alert("something went wrong, hold on!");

@@ -3,6 +3,11 @@ export default function getShortestPath(end_node_coordinates = [], parent_coordi
     let row = end_node_coordinates[0];
     let column = end_node_coordinates[1]
     let current = parent_coordinates_matrix[row][column];
+    
+    if(current === null)
+    {
+        return [] 
+    }
 
     path.push(end_node_coordinates);
     do 

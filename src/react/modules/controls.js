@@ -14,7 +14,7 @@ export default function Controls() {
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
                 <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { clearMatrix(); }}>
-                    <option selected disabled>Select A Pathfinding Algorithm</option>
+                <option disabled>Choose A Path Finding Algorithm</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
                     <option value="dijkstra">Dijkstra's</option>
@@ -24,14 +24,13 @@ export default function Controls() {
 
             <div className={"flex row row-node-types"}>
                 <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => { }}>
-                    <option selected disabled>Add Items To The Grid</option>
-                    <option value="additional_destination_node">Additional Destination Node</option>
-                    {/* <option value="empty_node">Additional Destination Node</option> */}
-                    <option value="empty_node">Empty Node</option>
-                    <option value="end_node">End Node</option>
-                    <option value="start_node">Start Node</option>
-                    <option value="wall_node">Wall Node</option>
-                    <option value="weight_node">Weight Node</option>
+                    <option disabled defaultValue={true}>Add Items To The Grid</option>
+                    <option value="additional_destination_node">Add An Additional Destination</option>
+                    <option value="empty_node">Remove An Item</option>
+                    <option value="end_node">Move The Ending Place</option>
+                    <option value="start_node">Move The Starting Place</option>
+                    <option value="wall_node">Add A Wall Block</option>
+                    <option value="weight_node">Add A Weight</option>
                 </MasterCTA>
             </div>
 

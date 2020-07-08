@@ -8,13 +8,14 @@ import { dispatchedStartedSearch, dispatchedStoppedSearch } from "../redux/dispa
 import { breadthFirstSearch } from "./breadth-first-search";
 import depthFirstSearch from "./depth-first-search";
 import aStar from "./a-star";
+import flicker from "../helpers/dom-helpers/flicker";
 
 function getAlgorithm(array = [[]], type = "mergesort", start_coordinates, end_coordinates, additional_destinations, walls, weights) {
     if (type === "a*") {
         return aStar(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
     }
     else if (type === "bfs") {
-        return breadthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
+        return breadthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls);
     }
     else if (type === "dfs") {
         return depthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
@@ -63,24 +64,32 @@ export default async function startPathFinding() {
 
     var i = 0;
     while (playing && i < visited_nodes.length) {
-
+        
         let copy_matrix = changeNodeToVisited(visited_nodes[i], array);
         dispatchedChangedNodeType(copy_matrix);
+        await flicker(visited_nodes[i]);
         playing = await store.getState().settings;
         i++;
         await sleep(500 / getValueByElementId("speed"));
 
     }
 
-    array = store.getState().grid;
+    array = await store.getState().grid;
     i = 0;
+    if(shortest_path_nodes.length === 0)
+    {
+        alert("There is no path to the end desination!")
+        return;
+    }
+
     while (playing && i < shortest_path_nodes.length) {
 
         let copy_matrix = changeNodeToShortestPath(shortest_path_nodes[i], array);
         dispatchedChangedNodeType(copy_matrix);
+        await flicker(shortest_path_nodes[i])
         playing = await store.getState().settings;
         i++;
-        await sleep(500 / getValueByElementId("speed"));
+        await sleep(1000 / getValueByElementId("speed"));
 
     }
     dispatchedStoppedSearch();

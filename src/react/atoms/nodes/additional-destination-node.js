@@ -2,9 +2,9 @@ import React from 'react';
 import { BaseNode } from "./abstraction/base-node"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faDotCircle} from "@fortawesome/free-solid-svg-icons";
+import { faStreetView} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faDotCircle);
+library.add(faStreetView);
 // import "../../../css/node.css"
 
 
@@ -15,7 +15,7 @@ export const AdditionalDestinationNode = ({
 }) => (
         <BaseNode className={"node node-additional-destestination " + className} onClick={onClick}{...props}>
         {/* <div> */}
-        <FontAwesomeIcon icon="dot-circle" />
+        <FontAwesomeIcon icon="street-view" />
         {/* </div> */}
         </BaseNode>
     )

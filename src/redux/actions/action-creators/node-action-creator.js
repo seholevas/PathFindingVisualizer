@@ -1,38 +1,42 @@
 import * as nodeActions from "../types/node-types"
 
-export function addedWeight(coordinates) {
+export function addedWeight(key,coordinates) {
     return {
         type: nodeActions.ADDED_WEIGHT,
         payload: {
+            key:key,
             coordinates: coordinates
         }
     }
 }
 
-export function removedWeight(coordinates) {
+export function removedWeight(key) {
     return {
         type: nodeActions.REMOVED_WEIGHT,
         payload: {
-            coordinates: coordinates
+            key: key,
+            // coordinates: coordinates
         }
     }
 }
 
 
-export function addedAdditionalDestination(coordinates) {
+export function addedAdditionalDestination(key, coordinates) {
     return {
         type: nodeActions.ADDED_ADDITIONAL_DESTINATION_NODE,
         payload: {
+            key: key,
             coordinates: coordinates
         }
     }
 }
 
-export function removedAdditionalDestination(coordinates) {
+export function removedAdditionalDestination(key) {
     return {
         type: nodeActions.REMOVED_ADDITIONAL_DESTINATION_NODE,
         payload: {
-            coordinates: coordinates
+            key: key,
+            // coordinates: coordinates
         }
     }
 }
@@ -57,20 +61,22 @@ export function movedEnd(coordinates) {
     }
 }
 
-export function addedWall(coordinates) {
+export function addedWall(key, coordinates) {
     return {
         type: nodeActions.ADDED_WALL,
         payload: {
+            key: key,
             coordinates: coordinates
         }
     }
 }
 
-export function removedWall(coordinates) {
+export function removedWall(key) {
     return {
         type: nodeActions.REMOVED_WALL,
         payload: {
-            coordinates: coordinates
+            key: key,
+            // coordinates: coordinates
         }
     }
 }

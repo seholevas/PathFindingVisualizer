@@ -14,6 +14,12 @@
   background: #e3e3e3;
 }
 
+.visited-true.flicker
+{
+  background: #f37c45;
+
+}
+
 .visited-true {
   background: #F3BB45;
 }
@@ -24,6 +30,11 @@
 
 .shortest-path-true {
   background: #DB5A42;
+}
+
+.shortest-path-true.flicker
+{
+  background: #db4242;
 }
 
 svg {
