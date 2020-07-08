@@ -1,18 +1,17 @@
-export function updateDistance(prev_value, node_location, adjacency_matrix=[[]], weights = []) {
+export function updateDistance(value, node_location, adjacency_matrix=[[]]) {
     let row = node_location[0];
     let column = node_location[1];
-    let value = 1;
+    // let value = 1;
 
-    for(let i = 0; i < weights.length; i++)
-    {
-        if((weights[i][0] === node_location[0])&&(weights[i][1] === node_location[1]))
-        {
-            // value += 15;
-            break;
-        }
-    }
+    // if(weights[node_location] !== undefined)
+    // {
+    //     value += 4
+    // }
 
 
-    if (prev_value < adjacency_matrix[row][column])
-        adjacency_matrix[row][column] = prev_value + value;
+    // if (prev_value < adjacency_matrix[row][column])
+        // adjacency_matrix[row][column] = prev_value + value;
+        adjacency_matrix[row][column] = value;
+
 }
+
