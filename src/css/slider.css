@@ -1,14 +1,14 @@
 .slider::-moz-range-thumb {
-  background: #e3403a;
-  border: #da251f;
+  background: #186c71;
+  border: #115053;
   width: 40px;
 }
 .slider::-moz-range-thumb:hover {
-  background: #e02c26;
+  background: #145a5e;
   cursor: pointer;
 }
 .slider::-moz-range-track {
-  background-color: #e3403a;
+  background-color: #186c71;
 }
 
 /*# sourceMappingURL=slider.css.map */

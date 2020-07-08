@@ -14,6 +14,7 @@ export default function Controls() {
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
                 <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { clearMatrix(); }}>
+                    <option selected disabled>Select A Pathfinding Algorithm</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
                     <option value="dijkstra">Dijkstra's</option>
@@ -23,6 +24,7 @@ export default function Controls() {
 
             <div className={"flex row row-node-types"}>
                 <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => { }}>
+                    <option selected disabled>Add Items To The Grid</option>
                     <option value="additional_destination_node">Additional Destination Node</option>
                     {/* <option value="empty_node">Additional Destination Node</option> */}
                     <option value="empty_node">Empty Node</option>
@@ -34,11 +36,11 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearMatrix(false);}}>Clear Path</MasterCTA>
+                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearMatrix(false); }}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
-                    await startPathFinding();            
+                    await startPathFinding();
                 }}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={async() => { dispatchedStoppedSearch(); clearMatrix(true); }}>Clear All</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => { dispatchedStoppedSearch(); clearMatrix(true); }}>Clear All</MasterCTA>
 
             </div>
 
