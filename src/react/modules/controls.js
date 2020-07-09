@@ -14,7 +14,7 @@ export default function Controls() {
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
                 <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { }}>
-                <option disabled>Choose A Path Finding Algorithm</option>
+                {/* <option disabled>Choose A Path Finding Algorithm</option> */}
                     <option value="a*">A*</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
@@ -24,8 +24,8 @@ export default function Controls() {
 
             <div className={"flex row row-node-types"}>
                 <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => { }}>
-                    <option disabled defaultValue={true}>Add Items To The Grid</option>
-                    <option value="additional_destination_node">Add An Additional Destination</option>
+                    <option disabled>Add Items To The Grid</option>
+                    {/* <option value="additional_destination_node">Add An Additional Destination</option> */}
                     <option value="empty_node">Remove An Item</option>
                     <option value="end_node">Move The Ending Place</option>
                     <option value="start_node">Move The Starting Place</option>

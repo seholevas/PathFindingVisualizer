@@ -7,7 +7,7 @@ import "../../css/node.css"
 // import { grabItem, releaseItem, holdingItem } from '../../helpers/action-listeners/on-mouse';
 
 export default function Grid() {
-
+// return <div></div>
     const grid = useSelector(state => state.grid)
     
     return <div className="grid visualizer">
