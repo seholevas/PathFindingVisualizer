@@ -39,6 +39,5 @@ export function changeArraySize()
 
     clearPath();
     clearAll();
-    dispatchedMovedEnd()
     dispatchedChangedMatrixSize(shallow_copy);
 }
