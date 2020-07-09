@@ -14,7 +14,7 @@ export default function* aStar(matrix = [[]], start = [0, 0], end = [3, 3], addi
     let start_coordinates = [...start]
     let end_coordinates = [...end]
     var priority_queue = new PriorityQueue();
-    let additional_dest = Object.assign({}, additional_destinations);
+    // let additional_dest = Object.assign({}, additional_destinations);
     let visited_coordinates = [];
     let path = [];
     let parent_matrix = shallowCopy(matrix, null);
@@ -23,33 +23,47 @@ export default function* aStar(matrix = [[]], start = [0, 0], end = [3, 3], addi
 
 
     distance_matrix[start_coordinates[0]][start_coordinates[1]] = 0;
+    // updatetoVisited(start_coordinates, visited);
+    // visited_coordinates.push(start_coordinates)
 
     priority_queue.enqueue([...start_coordinates], manhattanDistance(start_coordinates, end_coordinates));
     while (!priority_queue.isEmpty() && !found) {
         let q_item = priority_queue.dequeue();
         // let f_cost = tuple[0];
         let current_coordinates = q_item.element;
-        updatetoVisited(current_coordinates, visited);
-        visited_coordinates.push(current_coordinates);
-
-        if (Object.keys(additional_dest).length !== 0) {
-            let keys = Object.keys(additional_dest);
-            let next_dest = additional_dest[keys[0]]
-            delete additional_dest[keys[0]];
-            let new_path = aStar(matrix, current_coordinates, next_dest, additional_dest, walls, weights);
+        if (!visited[current_coordinates[0]][current_coordinates[1]]) {
+            updatetoVisited(current_coordinates, visited);
+            visited_coordinates.push(current_coordinates);
+        }
+        if (Object.keys(additional_destinations).length !== 0) {
+            let keys = Object.keys(additional_destinations);
+            let next_dest = additional_destinations[keys[0]]
+            // console.log(additional_destinations[keys[0]])
+            delete additional_destinations[keys[0]];
+            console.log("current coordinates: ", current_coordinates, "end coordinates: ", next_dest)
+            let new_path = aStar(matrix, current_coordinates, next_dest, additional_destinations, walls, weights);
             let add_to_visited_nodes = new_path.next().value;
             let add_shortest_path = new_path.next().value;
             visited_coordinates = visited_coordinates.concat(add_to_visited_nodes);
-            if (add_shortest_path === undefined)
-                break;
+            // if (add_shortest_path === undefined)
+            //     break;
             path = path.concat(add_shortest_path);
-
+            console.log("path: ", path);
+            current_coordinates = [...next_dest];
+            end_coordinates = [...end]
+            new_path = aStar(matrix, current_coordinates, end_coordinates, additional_destinations, walls, weights);
+            add_to_visited_nodes = new_path.next().value;
+            add_shortest_path = new_path.next().value;
+            visited_coordinates = visited_coordinates.concat(add_to_visited_nodes);
+            // if (add_shortest_path === undefined)
+            //     break;
+            path = path.concat(add_shortest_path);
             // end_coordinates = current_coordinates;
             // found = true;
 
 
         }
-        if (((current_coordinates[0] === end_coordinates[0]) && (current_coordinates[1] === end_coordinates[1])) && Object.keys(additional_dest).length === 0) {
+        if (((current_coordinates[0] === end_coordinates[0]) && (current_coordinates[1] === end_coordinates[1])) && Object.keys(additional_destinations).length === 0) {
             found = true;
         }
         // yield [...current_coordinates];
@@ -96,7 +110,8 @@ export default function* aStar(matrix = [[]], start = [0, 0], end = [3, 3], addi
     let undefined_or_path = getShortestPath(end_coordinates, parent_matrix);
     // if it is undefined, return undefined (void)
     if (undefined_or_path === undefined) {
-        return;
+        // return;
+        return path;
     }
 
     path = path.concat(undefined_or_path);

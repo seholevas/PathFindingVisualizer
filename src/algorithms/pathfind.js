@@ -11,8 +11,11 @@ import aStar from "./a-star";
 import flicker from "../helpers/dom-helpers/flicker";
 
 function getAlgorithm(array = [[]], type = "mergesort", start_coordinates, end_coordinates, additional_destinations, walls, weights) {
+    let copy_add_dest = Object.assign({}, additional_destinations);
+
+
     if (type === "a*") {
-        return aStar(array, start_coordinates, end_coordinates, additional_destinations, walls, weights);
+        return aStar(array, start_coordinates, end_coordinates, copy_add_dest, walls, weights);
     }
     else if (type === "bfs") {
         return breadthFirstSearch(array, start_coordinates, end_coordinates, additional_destinations, walls);
