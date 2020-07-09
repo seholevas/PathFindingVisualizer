@@ -36,11 +36,11 @@ export default function* depthFirstSearch(matrix = [[]], start_node_coordinates 
             let add_to_visited_nodes = new_path.next().value
             let add_to_path = new_path.next().value
             visited_coordinates = visited_coordinates.concat(add_to_visited_nodes);
-            console.log("in additional[dest] - path pre-concat: ", path)
+            // console.log("in additional[dest] - path pre-concat: ", path)
             // if no path to finish line
             if (add_to_path === undefined)
                 break;
-            path = path.concat(add_to_path);
+            // path = path.concat(add_to_path);
             console.log("in additional[dest] - path post-concat: ", path)
 
 
