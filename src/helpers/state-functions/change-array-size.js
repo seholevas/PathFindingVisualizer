@@ -15,7 +15,6 @@ export function changeArraySize()
     const end = store.getState().nodes.end_coordinates;
     const grid_size = store.getState().grid.length;
 
-
     if ((start[0] < size_of_matrix-1) && (start[1] < size_of_matrix-1)) {
         shallow_copy[start[0]][start[1]] = { type: "start_node", visited: false, shortest_path: false };
     }
@@ -40,6 +39,6 @@ export function changeArraySize()
 
     clearPath();
     clearAll();
-
+    dispatchedMovedEnd()
     dispatchedChangedMatrixSize(shallow_copy);
 }

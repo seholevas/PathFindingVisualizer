@@ -89,6 +89,7 @@ export function clearPath() {
             let node = copy[i][j]
             node["visited"] = false;
             node["shortest_path"] = false;
+            copy[i][j] = node;
 
         }
     }
@@ -121,6 +122,8 @@ export function clearAll()
                     break;
                 case "wall_node":
                     dispatchedRemovedWall([i,j]);
+                    break;
+                default:
                     break;
             }
 
