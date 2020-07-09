@@ -44,10 +44,10 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-sliders">
-                {/* <div>
+                <div>
                     Size
                 <MasterCTA type={"slider"} id={"size"} onChange={() => { changeArraySize(); }}></MasterCTA>
-                </div> */}
+                </div>
                 <div>
                     Speed
                 <MasterCTA type={"slider"} id={"speed"} onChange={() => { }}></MasterCTA>
