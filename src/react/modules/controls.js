@@ -3,7 +3,7 @@ import MasterCTA from '../atoms/controls/call-to-actions/abstractions/master-cal
 import startPathFinding from "../../algorithms/pathfind"
 import { dispatchedStoppedSearch } from '../../redux/dispatchs/settings-dispatchs'
 import { changeArraySize } from '../../helpers/state-functions/change-array-size'
-import { clearMatrix } from '../../helpers/state-functions/clear-matrix'
+import { clearMatrix, clearPath, clearAll } from '../../helpers/state-functions/clear-matrix'
 import "../../css/choicebox.css"
 import "../../css/button.css"
 import "../../css/slider.css"
@@ -14,7 +14,7 @@ export default function Controls() {
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
                 <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => { }}>
-                {/* <option disabled>Choose A Path Finding Algorithm</option> */}
+                <option disabled>Choose A Path Finding Algorithm</option>
                     <option value="a*">A*</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
@@ -25,7 +25,7 @@ export default function Controls() {
             <div className={"flex row row-node-types"}>
                 <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => { }}>
                     <option disabled>Add Items To The Grid</option>
-                    {/* <option value="additional_destination_node">Add An Additional Destination</option> */}
+                    <option value="additional_destination_node">Add An Additional Destination</option>
                     <option value="empty_node">Remove An Item</option>
                     <option value="end_node">Move The Ending Place</option>
                     <option value="start_node">Move The Starting Place</option>
@@ -35,19 +35,19 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearMatrix(false); }}>Clear Path</MasterCTA>
+                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();
                 }}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={async () => { dispatchedStoppedSearch(); clearMatrix(true); }}>Clear All</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => { dispatchedStoppedSearch(); clearAll()  }}>Clear All</MasterCTA>
 
             </div>
 
             <div className="flex row row-sliders">
-                <div>
+                {/* <div>
                     Size
                 <MasterCTA type={"slider"} id={"size"} onChange={() => { changeArraySize(); }}></MasterCTA>
-                </div>
+                </div> */}
                 <div>
                     Speed
                 <MasterCTA type={"slider"} id={"speed"} onChange={() => { }}></MasterCTA>

@@ -21,16 +21,16 @@ export function dispatchedMovedEnd(coordinates = []) {
     store.dispatch(nodeDispatched.movedEnd(coordinates))
 }
 
-export function dispatchedRemovedAdditionalDestination(key, coordinates = []) {
-    store.dispatch(nodeDispatched.removedAdditionalDestination(key, coordinates));
+export function dispatchedRemovedAdditionalDestination(key) {
+    store.dispatch(nodeDispatched.removedAdditionalDestination(key));
 }
 
 export function dispatchedRemovedWall(key) {
     store.dispatch(nodeDispatched.removedWall(key));
 }
 
-export function dispatchedRemovedWeight(key, coordinates = []) {
-    store.dispatch(nodeDispatched.removedWeight(key, coordinates));
+export function dispatchedRemovedWeight(key) {
+    store.dispatch(nodeDispatched.removedWeight(key));
 }
 
 
