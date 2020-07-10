@@ -2,7 +2,7 @@ import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
-import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
+// import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
 
 
@@ -10,7 +10,7 @@ export default function* depthFirstSearch(matrix = [[]], start_node_coordinates 
     // data structure for storing next values
     let stack = [];
     let path = [];
-    let start_coordinates = [...start_node_coordinates];
+    // let start_coordinates = [...start_node_coordinates];
     let end_coordinates = [...end_node_coordinates];
     let additional_dest = Object.assign({}, additional_destinations);
     // coordinates that have been visited

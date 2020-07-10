@@ -3,7 +3,7 @@ import MasterCTA from '../atoms/controls/call-to-actions/abstractions/master-cal
 import startPathFinding from "../../algorithms/pathfind"
 import { dispatchedStoppedSearch } from '../../redux/dispatchs/settings-dispatchs'
 import { changeArraySize } from '../../helpers/state-functions/change-array-size'
-import { clearMatrix, clearPath, clearAll } from '../../helpers/state-functions/clear-matrix'
+import {clearPath, clearAll } from '../../helpers/state-functions/clear-matrix'
 import "../../css/choicebox.css"
 import "../../css/button.css"
 import "../../css/slider.css"

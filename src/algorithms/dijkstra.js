@@ -1,7 +1,7 @@
 import isEqual from "../helpers/2d-array-functions/is-equal";
 import shallowCopy from "../helpers/2d-array-functions/shallow-copy";
 import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-neighbors";
-import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
+// import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import { updateDistance } from "./helpers/matrix-helpers/setters-and-getters/update-distance";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path";
@@ -11,7 +11,7 @@ import { calculateWeight } from "./helpers/matrix-helpers/setters-and-getters/ca
 
 
 export default function* dijkstra(matrix = [[]], source = [2, 2], end = [0, 3], additional_destinations, walls, weights) {
-    let start_coordinates = [...source];
+    // let start_coordinates = [...source];
     let end_coordinates = [...end];
     let visited_coordinates = [];
     let path = [];

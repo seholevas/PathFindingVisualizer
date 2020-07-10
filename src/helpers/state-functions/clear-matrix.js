@@ -1,9 +1,7 @@
-import { getValueByElementId } from "../functions/get-value-by-element-id";
-import generateMatrix from "../2d-array-functions/generate-matrix";
 import shallowCopy from "../2d-array-functions/shallow-copy";
-import { dispatchedClearMatrix, dispatchedChangedNodeType } from "../../redux/dispatchs/grid-dispatchs";
+import { dispatchedChangedNodeType } from "../../redux/dispatchs/grid-dispatchs";
 import store from "../../redux/stores/store";
-import { dispatchedRemovedAdditionalDestination, dispatchedRemovedWeight, dispatchedRemovedWall, dispatchedMovedStart, dispatchedAddedWall, dispatchedMovedEnd } from "../../redux/dispatchs/node-dispatchs";
+import { dispatchedRemovedAdditionalDestination, dispatchedRemovedWeight, dispatchedRemovedWall, dispatchedMovedStart, dispatchedMovedEnd } from "../../redux/dispatchs/node-dispatchs";
 
 // export function clearMatrix(isClearAll = true) 
 // {
@@ -81,7 +79,7 @@ import { dispatchedRemovedAdditionalDestination, dispatchedRemovedWeight, dispat
 // dispatchedChangedNodeType(matrix)
 // }
 
-export function clearPath() {
+export async function clearPath() {
     const start = await store.getState().nodes.start_coordinates;
     const end = await store.getState().nodes.end_coordinates;
     let grid = await store.getState().grid;
@@ -101,9 +99,9 @@ export function clearPath() {
     dispatchedMovedEnd([...end])
 }
 
-export function clearAll()
+export async function clearAll()
 {
-    clearPath();
+    await clearPath();
     let grid = store.getState().grid;
     let copy = shallowCopy(grid);
     for (let i = 0; i < copy.length; i++) {

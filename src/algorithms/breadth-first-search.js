@@ -3,7 +3,7 @@ import { checkNeighbors } from "./helpers/matrix-helpers/async-helpers/check-nei
 import { updatetoVisited } from "./helpers/matrix-helpers/setters-and-getters/update-to-visited";
 import { updateParent } from "./helpers/matrix-helpers/setters-and-getters/update-parent";
 import getShortestPath from "./helpers/matrix-helpers/setters-and-getters/get-shortest-path"
-import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
+// import coordinatesAreEqual from "./helpers/matrix-helpers/setters-and-getters/coordinates-are-equal";
 export function* breadthFirstSearch(matrix = [[]], start = [0, 0], end = [3, 3], additional_destinations, walls) {
     let visited_coordinates = [];
     let queue = [];

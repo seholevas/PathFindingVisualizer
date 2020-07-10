@@ -1,12 +1,12 @@
 import store from "../stores/store"
 import * as buttonDispatch from "../actions/action-creators/settings-action-creator"
 
-export function dispatchedStartedSearch()
+export async function dispatchedStartedSearch()
 {
     await store.dispatch(buttonDispatch.pressedStart());
 }
 
-export function dispatchedStoppedSearch()
+export async function dispatchedStoppedSearch()
 {
     await store.dispatch(buttonDispatch.pressedStop());
 }
