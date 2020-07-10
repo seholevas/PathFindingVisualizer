@@ -15,13 +15,13 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/" exact component={PathFindingInstructionsPage}>
+          <Route path="/PathFindingVisualizer/" exact component={PathFindingInstructionsPage}>
             {/* <InstructionsPage></InstructionsPage> */}
           </Route>
-          <Route path="/Algorithms" component={AlgorithmInstructionsPage}>
+          <Route path="PathFindingVisualizer/Algorithms" component={AlgorithmInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
-          <Route path="/Items" component={ItemsInstructionsPage}>
+          <Route path="PathFindingVisualizer/Items" component={ItemsInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
           <Route path="/Play" component={PathFindApp}>
