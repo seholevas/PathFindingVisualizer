@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/" component={PathFindingInstructionsPage}>
+          <Route path="/" exact component={PathFindingInstructionsPage}>
             {/* <InstructionsPage></InstructionsPage> */}
           </Route>
           <Route path="/Algorithms" component={AlgorithmInstructionsPage}>
