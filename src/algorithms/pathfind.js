@@ -9,6 +9,7 @@ import { breadthFirstSearch } from "./breadth-first-search";
 import depthFirstSearch from "./depth-first-search";
 import aStar from "./a-star";
 import flicker from "../helpers/dom-helpers/flicker";
+import { clearPath } from "../helpers/state-functions/clear-matrix";
 
 function getAlgorithm(array = [[]], type = "mergesort", start_coordinates, end_coordinates, additional_destinations, walls, weights) {
     let copy_add_dest = Object.assign({}, additional_destinations);
@@ -48,6 +49,10 @@ export default async function startPathFinding() {
 
     if (playing) {
         return;
+    }
+    else
+    {
+        await clearPath();
     }
 
     dispatchedStartedSearch();
