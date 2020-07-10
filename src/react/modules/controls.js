@@ -33,7 +33,7 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"buttfon"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
+                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();
                 }}>Play</MasterCTA>
