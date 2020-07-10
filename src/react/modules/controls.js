@@ -33,7 +33,7 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
+                <MasterCTA type={"buttfon"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();
                 }}>Play</MasterCTA>
@@ -44,7 +44,7 @@ export default function Controls() {
             <div className="flex row row-sliders">
                 <div>
                     Size
-                <MasterCTA type={"slider"} id={"size"} onChange={() => { changeArraySize(); }}></MasterCTA>
+                <MasterCTA type={"slider"} id={"size"} onChange={() => {  dispatchedStoppedSearch(); changeArraySize(); }}></MasterCTA>
                 </div>
                 <div>
                     Speed
