@@ -44,7 +44,7 @@ export default async function startPathFinding() {
     let end_coordinates = await store.getState().nodes.end_coordinates;
     let weights = await store.getState().nodes.weight_coordinates;
     let walls = await store.getState().nodes.wall_coordinates;
-    let additional_destinations = store.getState().nodes.additional_destination_coordinates;
+    let additional_destinations = await store.getState().nodes.additional_destination_coordinates;
 
     if (playing) {
         return;
@@ -69,7 +69,7 @@ export default async function startPathFinding() {
     while (playing && i < visited_nodes.length) {
         
         let copy_matrix = changeNodeToVisited(visited_nodes[i], array);
-        dispatchedChangedNodeType(copy_matrix);
+        await dispatchedChangedNodeType(copy_matrix);
         await flicker(visited_nodes[i]);
         playing = await store.getState().settings;
         i++;
@@ -88,25 +88,12 @@ export default async function startPathFinding() {
     while (playing && i < shortest_path_nodes.length) {
 
         let copy_matrix = changeNodeToShortestPath(shortest_path_nodes[i], array);
-        dispatchedChangedNodeType(copy_matrix);
+        await dispatchedChangedNodeType(copy_matrix);
         await flicker(shortest_path_nodes[i])
         playing = await store.getState().settings;
         i++;
-        await sleep(1000 / getValueByElementId("speed"));
+        await sleep(500 / getValueByElementId("speed"));
 
     }
-    dispatchedStoppedSearch();
-
-    // // && playing
-    // while (!result.done && playing) {
-
-    //     let value = result.value
-    //     console.log("value: ", value)
-    //     let shallow_matrix = updateNodeState(value, array);
-    //     dispatchedChangedNodeType(shallow_matrix);
-    //     result = generator.next();
-    //     playing = store.getState().settings
-    //     await sleep(1000 / getValueByElementId("speed"));
-    // }
-    // dispatchedStoppedSearch();
+    await dispatchedStoppedSearch();
 }

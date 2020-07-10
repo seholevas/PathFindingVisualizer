@@ -13,7 +13,7 @@ export default function Controls() {
     return (
         <div className="grid controls">
             <div className={"flex row row-algorithms"} >
-                <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => {dispatchedStoppedSearch();clearPath()}}>
+                <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={() => {dispatchedStoppedSearch();await clearPath()}}>
                     <option value="a*">A*</option>
                     <option value="bfs">Breadth First Search</option>
                     <option value="dfs">Depth First Search</option>
@@ -22,7 +22,7 @@ export default function Controls() {
             </div>
 
             <div className={"flex row row-node-types"}>
-                <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => {dispatchedStoppedSearch(); clearPath()}}>
+                <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={() => {dispatchedStoppedSearch(); await clearPath()}}>
                     <option value="additional_destination_node">Add An Additional Destination</option>
                     <option value="empty_node">Remove An Item</option>
                     <option value="end_node">Move The Ending Place</option>
@@ -48,7 +48,7 @@ export default function Controls() {
                 </div>
                 <div>
                     Speed
-                <MasterCTA type={"slider"} id={"speed"} onChange={() => { }}></MasterCTA>
+                <MasterCTA type={"slider"} id={"speed"} min={5} max={100}onChange={() => { }}></MasterCTA>
                 </div>
             </div>
         </div>

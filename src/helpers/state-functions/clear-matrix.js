@@ -94,9 +94,9 @@ export async function clearPath() {
 
         }
     }
-    dispatchedChangedNodeType(copy);
-    dispatchedMovedStart([...start]);
-    dispatchedMovedEnd([...end])
+    await dispatchedChangedNodeType(copy);
+    await dispatchedMovedStart([...start]);
+    await dispatchedMovedEnd([...end])
 }
 
 export async function clearAll()
@@ -110,7 +110,7 @@ export async function clearAll()
             var type = null;
             if(node['type'] !== "start_node" && node["type"] !== "end_node")
             {
-               type = node['type']
+               type = node['type']g
                node = { type: "empty_node", visited: false, shortest_path: false} 
                copy[i][j] = node;
             }
@@ -118,13 +118,13 @@ export async function clearAll()
             switch(type)
             {
                 case "additional_destination_node":
-                    dispatchedRemovedAdditionalDestination([i,j]);
+                    await dispatchedRemovedAdditionalDestination([i,j]);
                     break;
                 case "weight_node":
-                    dispatchedRemovedWeight([i,j]);
+                    await dispatchedRemovedWeight([i,j]);
                     break;
                 case "wall_node":
-                    dispatchedRemovedWall([i,j]);
+                    await dispatchedRemovedWall([i,j]);
                     break;
                 default:
                     break;
@@ -134,5 +134,5 @@ export async function clearAll()
         
     }
 
-    dispatchedChangedNodeType(copy);
+    await dispatchedChangedNodeType(copy);
 }
