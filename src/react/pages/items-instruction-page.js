@@ -44,9 +44,9 @@ export default class ItemsInstructionsPage extends Component {
                     </div>
 
                     <div className={"flex row"}>
-                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/Play"); }}>Skip</MasterCTA>
-                        <MasterCTA type={"button"} onClick={async()=>{await this.props.history.push("/Algorithms")}}>Previous</MasterCTA>
-                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/Play")}}>Next</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/PathFindingVisualizer/Play"); }}>Skip</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async()=>{await this.props.history.push("/PathFindingVisualizer/Algorithms")}}>Previous</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/PathFindingVisualizer/Play")}}>Next</MasterCTA>
                     </div>
             </Card>
         )

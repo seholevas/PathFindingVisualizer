@@ -18,13 +18,13 @@ function App() {
           <Route path="/PathFindingVisualizer/" exact component={PathFindingInstructionsPage}>
             {/* <InstructionsPage></InstructionsPage> */}
           </Route>
-          <Route path="PathFindingVisualizer/Algorithms" component={AlgorithmInstructionsPage}>
+          <Route path="/PathFindingVisualizer/Algorithms" component={AlgorithmInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
-          <Route path="PathFindingVisualizer/Items" component={ItemsInstructionsPage}>
+          <Route path="/PathFindingVisualizer/Items" component={ItemsInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
-          <Route path="/Play" component={PathFindApp}>
+          <Route path="PathFindingVisualizer/Play" component={PathFindApp}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
       </Switch>
