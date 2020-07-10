@@ -33,11 +33,11 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={() => { dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => {dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();
                 }}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={async () => { dispatchedStoppedSearch(); clearAll()  }}>Clear All</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => {dispatchedStoppedSearch(); clearAll()  }}>Clear All</MasterCTA>
 
             </div>
 

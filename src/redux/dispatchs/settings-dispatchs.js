@@ -3,10 +3,10 @@ import * as buttonDispatch from "../actions/action-creators/settings-action-crea
 
 export function dispatchedStartedSearch()
 {
-    store.dispatch(buttonDispatch.pressedStart());
+    await store.dispatch(buttonDispatch.pressedStart());
 }
 
 export function dispatchedStoppedSearch()
 {
-    store.dispatch(buttonDispatch.pressedStop());
+    await store.dispatch(buttonDispatch.pressedStop());
 }

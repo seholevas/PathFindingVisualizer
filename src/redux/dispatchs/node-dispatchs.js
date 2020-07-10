@@ -2,35 +2,35 @@ import store from "../stores/store";
 import * as nodeDispatched from "../actions/action-creators/node-action-creator"
 
 export function dispatchedAddedAdditionalDestination(key, coordinates = []) {
-    store.dispatch(nodeDispatched.addedAdditionalDestination(key, coordinates));
+    await store.dispatch(nodeDispatched.addedAdditionalDestination(key, coordinates));
 }
 export function dispatchedAddedWall(key, coordinates = []) {
-    store.dispatch(nodeDispatched.addedWall(key, coordinates));
+    await store.dispatch(nodeDispatched.addedWall(key, coordinates));
 }
 
 export function dispatchedAddedWeight(key, coordinates = []) {
-    store.dispatch(nodeDispatched.addedWeight(key, coordinates));
+    await store.dispatch(nodeDispatched.addedWeight(key, coordinates));
 }
 
 
 export function dispatchedMovedStart(coordinates = []) {
-    store.dispatch(nodeDispatched.movedStart(coordinates))
+    await store.dispatch(nodeDispatched.movedStart(coordinates))
 }
 
 export function dispatchedMovedEnd(coordinates = []) {
-    store.dispatch(nodeDispatched.movedEnd(coordinates))
+    await store.dispatch(nodeDispatched.movedEnd(coordinates))
 }
 
 export function dispatchedRemovedAdditionalDestination(key) {
-    store.dispatch(nodeDispatched.removedAdditionalDestination(key));
+    await store.dispatch(nodeDispatched.removedAdditionalDestination(key));
 }
 
 export function dispatchedRemovedWall(key) {
-    store.dispatch(nodeDispatched.removedWall(key));
+    await store.dispatch(nodeDispatched.removedWall(key));
 }
 
 export function dispatchedRemovedWeight(key) {
-    store.dispatch(nodeDispatched.removedWeight(key));
+    await store.dispatch(nodeDispatched.removedWeight(key));
 }
 
 

@@ -82,9 +82,9 @@ import { dispatchedRemovedAdditionalDestination, dispatchedRemovedWeight, dispat
 // }
 
 export function clearPath() {
-    const start = store.getState().nodes.start_coordinates;
-    const end = store.getState().nodes.end_coordinates;
-    let grid = store.getState().grid;
+    const start = await store.getState().nodes.start_coordinates;
+    const end = await store.getState().nodes.end_coordinates;
+    let grid = await store.getState().grid;
     let copy = shallowCopy(grid);
 
     for (let i = 0; i < copy.length; i++) {

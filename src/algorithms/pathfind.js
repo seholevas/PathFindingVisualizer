@@ -38,12 +38,12 @@ function getAlgorithm(array = [[]], type = "mergesort", start_coordinates, end_c
 }
 
 export default async function startPathFinding() {
-    var array = store.getState().grid;
-    let playing = store.getState().settings;
-    let start_coordinates = store.getState().nodes.start_coordinates;
-    let end_coordinates = store.getState().nodes.end_coordinates;
-    let weights = store.getState().nodes.weight_coordinates;
-    let walls = store.getState().nodes.wall_coordinates;
+    var array = await store.getState().grid;
+    let playing = await store.getState().settings;
+    let start_coordinates = await store.getState().nodes.start_coordinates;
+    let end_coordinates = await store.getState().nodes.end_coordinates;
+    let weights = await store.getState().nodes.weight_coordinates;
+    let walls = await store.getState().nodes.wall_coordinates;
     let additional_destinations = store.getState().nodes.additional_destination_coordinates;
 
     if (playing) {
@@ -81,7 +81,7 @@ export default async function startPathFinding() {
     i = 0;
     if(shortest_path_nodes === undefined)
     {
-        alert("There is no path to the end desination!")
+        alert("There is no path to the end desination!");
         return;
     }
 
