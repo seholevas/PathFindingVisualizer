@@ -82,8 +82,11 @@ import { dispatchedRemovedAdditionalDestination, dispatchedRemovedWeight, dispat
 // }
 
 export function clearPath() {
+    const start = store.getState().nodes.start_coordinates;
+    const end = store.getState().nodes.end_coordinates;
     let grid = store.getState().grid;
     let copy = shallowCopy(grid);
+
     for (let i = 0; i < copy.length; i++) {
         for (let j = 0; j < copy.length; j++) {
             let node = copy[i][j]
@@ -94,6 +97,8 @@ export function clearPath() {
         }
     }
     dispatchedChangedNodeType(copy);
+    dispatchedMovedStart([...start]);
+    dispatchedMovedEnd([...end])
 }
 
 export function clearAll()
@@ -130,5 +135,6 @@ export function clearAll()
         }
         
     }
+
     dispatchedChangedNodeType(copy);
 }
