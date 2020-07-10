@@ -33,18 +33,18 @@ export default function Controls() {
             </div>
 
             <div className="flex row row-buttons">
-                <MasterCTA type={"button"} onClick={async () => {dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => {await dispatchedStoppedSearch(); clearPath();}}>Clear Path</MasterCTA>
                 <MasterCTA type={"button"} onClick={async () => {
                     await startPathFinding();
                 }}>Play</MasterCTA>
-                <MasterCTA type={"button"} onClick={async () => {dispatchedStoppedSearch(); clearAll()  }}>Clear All</MasterCTA>
+                <MasterCTA type={"button"} onClick={async () => {await dispatchedStoppedSearch(); clearAll()  }}>Clear All</MasterCTA>
 
             </div>
 
             <div className="flex row row-sliders">
                 <div>
                     Size
-                <MasterCTA type={"slider"} id={"size"} onChange={() => {  dispatchedStoppedSearch(); changeArraySize(); }}></MasterCTA>
+                <MasterCTA type={"slider"} id={"size"} onChange={() => { await dispatchedStoppedSearch(); changeArraySize(); }}></MasterCTA>
                 </div>
                 <div>
                     Speed
