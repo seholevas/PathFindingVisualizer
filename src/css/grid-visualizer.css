@@ -10,6 +10,7 @@
   /* align-content: center; */
   /* align-items: center; */
   /* justify-items: stretch; */
+  /* grid-template-rows: repeat(auto-fit, minmax(20px, 1fr)); */
   grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));
   height: 50%;
   width: 100%;
@@ -37,6 +38,7 @@
 .flex-item
 {
   width: 1fr;
+  height: 1fr;
   flex: 1;
 }
 

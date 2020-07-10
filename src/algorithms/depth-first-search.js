@@ -40,7 +40,7 @@ export default function* depthFirstSearch(matrix = [[]], start_node_coordinates 
             // if no path to finish line
             if (add_to_path === undefined)
                 break;
-            // path = path.concat(add_to_path);
+            path = path.concat(add_to_path);
             console.log("in additional[dest] - path post-concat: ", path)
 
 

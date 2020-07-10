@@ -15,8 +15,8 @@ export default function Controls() {
             <div className={"flex row row-algorithms"} >
                 <MasterCTA type={"select"} id={"algorithms"} className="choicebox" onChange={async () => {await dispatchedStoppedSearch();await clearPath()}}>
                     <option value="a*">A*</option>
-                    <option value="bfs">Breadth First Search</option>
-                    <option value="dfs">Depth First Search</option>
+                    <option value="bfs">Breadth First Search [UNWEIGHTED]</option>
+                    <option value="dfs">Depth First Search [UNWEIGHTED]</option>
                     <option value="dijkstra">Dijkstra's</option>
                 </MasterCTA>
             </div>
@@ -24,11 +24,11 @@ export default function Controls() {
             <div className={"flex row row-node-types"}>
                 <MasterCTA type={"select"} id={"node-types"} className="choicebox" onChange={async () => {await dispatchedStoppedSearch(); await clearPath()}}>
                     <option value="additional_destination_node">Add An Additional Destination</option>
-                    <option value="empty_node">Remove An Item</option>
-                    <option value="end_node">Move The Ending Place</option>
-                    <option value="start_node">Move The Starting Place</option>
                     <option value="wall_node">Add A Wall Block</option>
                     <option value="weight_node">Add A Weight</option>
+                    <option value="end_node">Move The Ending Place</option>
+                    <option value="start_node">Move The Starting Place</option>
+                    <option value="empty_node">Remove An Item</option>
                 </MasterCTA>
             </div>
 

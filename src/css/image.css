@@ -1,0 +1,12 @@
+img {
+  max-width: 50%;
+  max-width: 20%;
+  max-height: 5%;
+  filter: invert(26%) sepia(100%) saturate(375%) hue-rotate(134deg) brightness(93%) contrast(88%);
+}
+
+.img.center {
+  text-align: center;
+}
+
+/*# sourceMappingURL=image.css.map */

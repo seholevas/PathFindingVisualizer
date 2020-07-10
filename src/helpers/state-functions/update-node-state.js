@@ -15,27 +15,29 @@ import shallowCopy from "../2d-array-functions/shallow-copy";
 //     matrix[coordinates[0]][coordinates[1]] = node;
 //     return shallowCopy(matrix);
 // }
-
-export function changeNodeToVisited(coordinates = [], matrix = [[]])
-{
+// changeNodeToVisited.ON_ADDITIONAL_PATH = false;
+export function changeNodeToVisited(coordinates = [], matrix = [[]]) {
     let node = matrix[coordinates[0]][coordinates[1]]
-    if(!node["shortest_path"])
-    {
+    if (node["visited"]) {
+        changeNodeToVisited.ON_ADDITIONAL_PATH = true
+
+    }
+    // if (changeNodeToVisited.ON_ADDITIONAL_PATH) {
+    //     var additional_path_element = document.getElementById(coordinates[0] + "-" + coordinates[1]);
+    //     additional_path_element.classList.add("visited-by-additional-path");
+    // }
+    if (!node["shortest_path"]) {
         node["visited"] = true;
     }
 
-    var flicker_element = document.getElementById(coordinates[0]+"-"+coordinates[1]);
-    flicker_element.classList.add("flicker");
 
     matrix[coordinates[0]][coordinates[1]] = node;
     return shallowCopy(matrix);
 }
 
-export function changeNodeToShortestPath(coordinates = [], matrix = [[]])
-{
+export function changeNodeToShortestPath(coordinates = [], matrix = [[]]) {
     let node = matrix[coordinates[0]][coordinates[1]]
-    if(!node["shortest_path"])
-    {
+    if (!node["shortest_path"]) {
         node["shortest_path"] = true;
     }
 

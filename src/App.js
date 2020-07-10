@@ -1,17 +1,35 @@
 import React from 'react';
-import Grid from './react/modules/grid';
-import Controls from './react/modules/controls';
+
+
 import "./css/app.css";
-import "./css/card.css"
+import PathFindApp from './react/pages/pathfind-page';
+import PathFindingInstructionsPage from './react/pages/path-finding-instructions-page';
+import AlgorithmInstructionsPage from "./react/pages/algorithms-instruction-page"
+import ItemsInstructionsPage from "./react/pages/items-instruction-page"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+
 
 function App() {
   return (
-    <div className="app">
-      <div className="card">
-        <Grid></Grid>
-        <Controls></Controls>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path="/" exact component={PathFindingInstructionsPage}>
+            {/* <InstructionsPage></InstructionsPage> */}
+          </Route>
+          <Route path="/Algorithms" component={AlgorithmInstructionsPage}>
+            {/* <PathFindApp></PathFindApp> */}
+          </Route>
+          <Route path="/Items" component={ItemsInstructionsPage}>
+            {/* <PathFindApp></PathFindApp> */}
+          </Route>
+          <Route path="/Play" component={PathFindApp}>
+            {/* <PathFindApp></PathFindApp> */}
+          </Route>
+      </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 
