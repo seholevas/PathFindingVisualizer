@@ -24,7 +24,11 @@ function App() {
           <Route path="/PathFindingVisualizer/Items" component={ItemsInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
+<<<<<<< HEAD
           <Route path="PathFindingVisualizer/Play" component={PathFindApp}>
+=======
+          <Route path="/PathFindingVisualizer/Play" component={PathFindApp}>
+>>>>>>> gh-pages
             {/* <PathFindApp></PathFindApp> */}
           </Route>
       </Switch>

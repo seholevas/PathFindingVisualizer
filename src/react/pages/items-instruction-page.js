@@ -12,7 +12,7 @@ import "../../css/grid.css"
 import "../../css/flex.css"
 library.add(faSquare);
 
-export default class ItemsInstructionsPage extends Component {
+export default class    ItemsInstructionsPage extends Component {
     render() {
         return (
             <Card className={"grid"}>
