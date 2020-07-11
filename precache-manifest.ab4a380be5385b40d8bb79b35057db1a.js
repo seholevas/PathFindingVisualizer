@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16e13e46b22508d0246d70436b12c8e8",
+    "revision": "1b2a74baa7d497b22974857971980568",
     "url": "/PathFindingVisualizer/index.html"
   },
   {
-    "revision": "1a0852b22bea05c2c0a3",
+    "revision": "64b77196b6fce8f9a436",
     "url": "/PathFindingVisualizer/static/css/main.3ad5f51f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PathFindingVisualizer/static/js/2.9bc50df6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1a0852b22bea05c2c0a3",
-    "url": "/PathFindingVisualizer/static/js/main.b4b402be.chunk.js"
+    "revision": "64b77196b6fce8f9a436",
+    "url": "/PathFindingVisualizer/static/js/main.d6f993f5.chunk.js"
   },
   {
     "revision": "6dc2662acc886107841f",
