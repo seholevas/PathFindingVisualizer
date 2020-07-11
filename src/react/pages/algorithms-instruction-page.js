@@ -35,9 +35,9 @@ export default class AlgorithmsInstructionsPage extends Component {
                     </div>
 
                     <div className={"flex row"}>
-                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/Play"); }}>Skip</MasterCTA>
-                        <MasterCTA type={"button"} onClick={async()=>{await this.props.history.push("/")}}>Previous</MasterCTA>
-                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/Items")}}>Next</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/PathFindingVisualizer/Play"); }}>Skip</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async()=>{await this.props.history.push("/PathFindingVisualizer/")}}>Previous</MasterCTA>
+                        <MasterCTA type={"button"} onClick={async ()=>{await this.props.history.push("/PathFindingVisualizer/Items")}}>Next</MasterCTA>
                     </div>
             </Card>
         )

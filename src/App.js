@@ -24,7 +24,7 @@ function App() {
           <Route path="PathFindingVisualizer/Items" component={ItemsInstructionsPage}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
-          <Route path="/Play" component={PathFindApp}>
+          <Route path="/PathFindingVisualizer/Play" component={PathFindApp}>
             {/* <PathFindApp></PathFindApp> */}
           </Route>
       </Switch>
